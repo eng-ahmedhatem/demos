@@ -57,6 +57,7 @@ body.is-locked{overflow:hidden}
 /* Supplied highlight stays behind upright text. */
 .circled{position:relative;display:inline-block;isolation:isolate;padding:0 .2em;border:0;border-radius:0;transform:none;white-space:nowrap}
 .circled::before{content:"";position:absolute;inset:-.2em -.18em;z-index:-1;background:url('../assets/highlight.svg') center/100% 100% no-repeat;pointer-events:none}
+.about .circled::before{transform:scale(1.45,1.18)}
 
 /* Section label: diamond + text */
 .label{display:flex;align-items:center;gap:10px;font-size:18px}
