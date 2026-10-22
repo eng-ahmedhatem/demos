@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+// Keep relative assets inside the site folder when opened without its final slash.
+(function () {
+  var path = window.location.pathname;
+  if (window.location.protocol !== 'file:' && path.charAt(path.length - 1) !== '/' && !/\.[^/]+$/.test(path)) {
+    window.location.replace(path + '/' + window.location.search + window.location.hash);
+  }
+})();
+</script>
 <title>صبّار — استوديو إبداعي سعودي</title>
 <meta name="description" content="استوديو إبداعي سعودي يجمع بين دقة التخطيط وحرفية الإنتاج.">
 <meta name="theme-color" content="#000000">
@@ -83,7 +92,7 @@
 <main>
 <section class="hero" id="story" aria-label="Hero">
     <div class="hero__text">
-      <span class="diamond diamond--lg" data-reveal="spin" aria-hidden="true"></span>
+      <span class="diamond diamond--lg" data-reveal="zoom" aria-hidden="true"></span>
       <p class="hero__eyebrow" data-reveal="up">استوديو إبداعي مستقل</p>
       <h1 data-reveal="up">إبداع ينمو بذكاء<br>نصنع <span class="circled">قصتك</span></h1>
       <p class="hero__sub" data-reveal="up">نحّول التحديات إلى أفكار، وحلول ابداعية تصنع أثر؛ بخبرة بشرية تتوسع بالذكاء والإبتكار</p>
@@ -120,23 +129,45 @@
     <div class="section" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)">
       <div class="stack" style="gap:clamp(24px,4vw,48px)">
         <div class="label wrap" data-reveal="up"><span class="diamond" aria-hidden="true"></span>كتبنا قصّة لـ</div>
-        <div class="clients__grid wrap">
-          <img src="assets/client1.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client2.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client3.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client4.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client5.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client6.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client7.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client8.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client9.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client10.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client11.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client12.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client13.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client14.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client15.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
-          <img src="assets/client16.png" alt="" loading="lazy" data-reveal="fade" data-stagger>
+        <div class="clients__marquee" aria-label="شعارات عملائنا">
+          <div class="clients__track">
+            <div class="clients__group">
+          <img src="assets/client1.png" alt="" loading="eager">
+          <img src="assets/client2.png" alt="" loading="eager">
+          <img src="assets/client3.png" alt="" loading="eager">
+          <img src="assets/client4.png" alt="" loading="eager">
+          <img src="assets/client5.png" alt="" loading="eager">
+          <img src="assets/client6.png" alt="" loading="eager">
+          <img src="assets/client7.png" alt="" loading="eager">
+          <img src="assets/client8.png" alt="" loading="eager">
+          <img src="assets/client9.png" alt="" loading="eager">
+          <img src="assets/client10.png" alt="" loading="eager">
+          <img src="assets/client11.png" alt="" loading="eager">
+          <img src="assets/client12.png" alt="" loading="eager">
+          <img src="assets/client13.png" alt="" loading="eager">
+          <img src="assets/client14.png" alt="" loading="eager">
+          <img src="assets/client15.png" alt="" loading="eager">
+          <img src="assets/client16.png" alt="" loading="eager">
+            </div>
+            <div class="clients__group" aria-hidden="true">
+          <img src="assets/client1.png" alt="" loading="eager">
+          <img src="assets/client2.png" alt="" loading="eager">
+          <img src="assets/client3.png" alt="" loading="eager">
+          <img src="assets/client4.png" alt="" loading="eager">
+          <img src="assets/client5.png" alt="" loading="eager">
+          <img src="assets/client6.png" alt="" loading="eager">
+          <img src="assets/client7.png" alt="" loading="eager">
+          <img src="assets/client8.png" alt="" loading="eager">
+          <img src="assets/client9.png" alt="" loading="eager">
+          <img src="assets/client10.png" alt="" loading="eager">
+          <img src="assets/client11.png" alt="" loading="eager">
+          <img src="assets/client12.png" alt="" loading="eager">
+          <img src="assets/client13.png" alt="" loading="eager">
+          <img src="assets/client14.png" alt="" loading="eager">
+          <img src="assets/client15.png" alt="" loading="eager">
+          <img src="assets/client16.png" alt="" loading="eager">
+            </div>
+          </div>
         </div>
       </div>
     </div>

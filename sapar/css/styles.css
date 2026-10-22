@@ -49,15 +49,14 @@ body.is-locked{overflow:hidden}
 .stack{display:flex;flex-direction:column}
 
 /* 5. Components ----------------------------------------------------------- */
-/* Green diamond marker */
-.diamond{position:relative;width:22px;height:22px;display:block;flex:none}
-.diamond::before,.diamond::after{content:"";position:absolute;inset:3px;background:var(--green)}
-.diamond::after{transform:rotate(45deg)}
+/* Supplied brand markers */
+.diamond{position:relative;width:22px;height:22px;display:block;flex:none;background:url('../assets/star.svg') center/contain no-repeat}
 .diamond--sm{width:18px;height:18px}
 .diamond--lg{width:26px;height:26px}
 
-/* Word circled in green */
-.circled{display:inline-block;border:2.5px solid var(--green);border-radius:50%;padding:0 .2em;transform:rotate(-4deg)}
+/* Supplied highlight stays behind upright text. */
+.circled{position:relative;display:inline-block;isolation:isolate;padding:0 .2em;border:0;border-radius:0;transform:none;white-space:nowrap}
+.circled::before{content:"";position:absolute;inset:-.2em -.18em;z-index:-1;background:url('../assets/highlight.svg') center/100% 100% no-repeat;pointer-events:none}
 
 /* Section label: diamond + text */
 .label{display:flex;align-items:center;gap:10px;font-size:18px}
@@ -126,7 +125,7 @@ body.is-locked{overflow:hidden}
   transition:opacity .5s ease,transform .6s var(--ease),color .25s ease,padding .3s ease}
 .drawer__nav a:hover{color:var(--green-bright);padding-inline-start:10px}
 .drawer__nav a[aria-current="page"]{color:var(--green-bright)}
-.drawer__nav a[aria-current="page"]::after{content:"";margin-inline-start:auto;align-self:center;width:10px;height:10px;background:var(--green);transform:rotate(45deg)}
+.drawer__nav a[aria-current="page"]::after{content:"";margin-inline-start:auto;align-self:center;width:14px;height:14px;background:url('../assets/star.svg') center/contain no-repeat}
 .drawer__nav small{font-size:12px;font-weight:500;color:var(--green);letter-spacing:.1em;min-width:22px;direction:ltr}
 .drawer.is-open .drawer__nav a{opacity:1;transform:none;transition-delay:calc(.12s + var(--i) * .06s),calc(.12s + var(--i) * .06s),0s,0s}
 .drawer__contact{display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(16px);transition:opacity .5s ease .45s,transform .6s var(--ease) .45s}
@@ -174,9 +173,18 @@ body.is-locked{overflow:hidden}
 
 /* Home: clients (white band) */
 .clients{background:#fff;color:#111}
-.clients__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(45%,130px),1fr));gap:clamp(12px,2vw,28px) clamp(8px,1.5vw,20px)}
-.clients__grid img{width:100%;aspect-ratio:17/12;object-fit:contain;transition:transform .35s var(--ease)}
-.clients__grid img:hover{transform:scale(1.06)}
+.clients__marquee{width:100%;overflow:hidden;direction:ltr;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.clients__track{display:flex;width:max-content;animation:clients-scroll 65s linear infinite;will-change:transform}
+.clients__group{display:flex;flex:none;align-items:center;justify-content:space-around;gap:clamp(24px,4vw,64px);padding-inline-end:clamp(24px,4vw,64px);min-width:100vw}
+.clients__group img{flex:none;width:clamp(120px,12vw,170px);height:clamp(90px,10vw,120px);object-fit:contain}
+.clients__marquee:hover .clients__track,.clients__marquee:focus-within .clients__track{animation-play-state:paused}
+@keyframes clients-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .clients__marquee{mask-image:none}
+  .clients__track{animation:none;width:100%;will-change:auto}
+  .clients__group{min-width:0;width:100%;flex-wrap:wrap;padding-inline:var(--pad-x);gap:16px}
+  .clients__group[aria-hidden="true"]{display:none}
+}
 
 /* Home: services */
 .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:40px 48px}
@@ -321,7 +329,7 @@ body.is-locked{overflow:hidden}
 .js [data-reveal]{opacity:0;transition:opacity .8s var(--ease) var(--d,0ms),transform .9s var(--ease) var(--d,0ms)}
 .js [data-reveal="up"]{transform:translateY(28px)}
 .js [data-reveal="zoom"]{transform:scale(.94)}
-.js [data-reveal="spin"]{transform:rotate(-90deg) scale(.4)}
+.js [data-reveal="spin"]{transform:scale(.94)}
 .js [data-reveal].is-visible{opacity:1;transform:none}
 
 /* 10. Reduced motion ------------------------------------------------------ */
