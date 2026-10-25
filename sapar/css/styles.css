@@ -373,3 +373,8 @@ body.is-locked{overflow:hidden}
 .service__copy{min-width:0;display:flex;flex-direction:column;gap:10px}
 @media(max-width:1000px){.services{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}}
 @media(max-width:600px){.services{grid-template-columns:1fr;gap:28px}}
+
+/* Shared page actions and paired service chips. */
+.cta__star{flex:none;width:22px;height:22px;object-fit:contain}
+.chapter .chips--services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chips--services .chip{min-width:0;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.6;white-space:normal;overflow-wrap:anywhere}
