@@ -214,17 +214,6 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .contact a,.contact p{font-size:1.05rem;text-decoration:none;font-variant-numeric:tabular-nums}
 .contact a:hover{text-decoration:underline;text-underline-offset:4px}
 
-/* Footer */
-.ftr{padding:0 var(--pad) 1.75rem;content-visibility:auto;contain-intrinsic-size:auto 640px}
-.ftr__word{display:block;width:100%;height:auto;padding-top:clamp(2.5rem,5vw,4rem)}
-.ftr__word text{font:300 200px var(--disp);font-stretch:125%;letter-spacing:-.04em;fill:var(--paper)}
-.ftr__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid rgba(236,235,231,.14);color:var(--soft);font-size:.95rem}
-.ftr h3{font-size:.85rem;font-weight:600;color:var(--paper);margin-bottom:.8rem}
-.ftr li+li{margin-top:.45rem}
-.ftr a{text-decoration:none}
-.ftr a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
-.ftr__base{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;font-size:.82rem;color:#7D86A3}
-
 
 /* ---------- Features accordion ---------- */
 .feat{padding:clamp(6rem,11vw,10rem) var(--pad)}
@@ -283,23 +272,89 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .lm img:hover{opacity:1}
 @keyframes lm{to{transform:translate3d(-50%,0,0)}}
 
-/* ---------- Journal ---------- */
-.jr{padding:clamp(6rem,11vw,10rem) var(--pad);position:relative}
-.jr__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
-.jr__head h2{font-size:clamp(2.6rem,6vw,5.6rem)}
-.jr__head a{color:var(--ink);text-underline-offset:5px;font-weight:500}
-.posts{border-top:1px solid var(--ink)}
-.post{display:grid;grid-template-columns:9rem minmax(0,1fr) minmax(0,18rem) 3rem;align-items:center;gap:1.5rem;min-height:7rem;padding:1rem 0;border-bottom:1px solid rgba(10,18,48,.18);text-decoration:none}
-.post time{font-size:.9rem;color:var(--mute);font-variant-numeric:tabular-nums}
-.post h3{font-family:var(--disp);font-stretch:108%;font-weight:600;font-size:clamp(1.4rem,2.6vw,2.4rem);letter-spacing:-.04em;line-height:1;text-transform:uppercase;transition:transform .6s var(--ease)}
-.post p{color:var(--mute);font-size:.95rem}
-.post__go{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(10,18,48,.3);transition:background-color .35s var(--ease),color .35s var(--ease),transform .45s var(--ease)}
-.post:hover h3{transform:translate3d(.75rem,0,0)}
-.post:hover .post__go{background:var(--ink);color:var(--paper);transform:rotate(45deg)}
-.post__th{display:none}
-.peek{position:fixed;left:0;top:0;z-index:60;width:20rem;aspect-ratio:16/10;border-radius:12px;overflow:hidden;pointer-events:none;opacity:0;transform:translate3d(-50%,-50%,0) scale(.85);transition:opacity .3s var(--ease),transform .45s var(--ease);box-shadow:0 30px 60px -20px rgba(7,11,24,.55);background:#2a241d;will-change:transform,opacity}
-.peek.on{opacity:1;transform:translate3d(-50%,-50%,0) scale(1)}
-.peek img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- Journal: a cabinet of drawers ---------- */
+.jr{padding:clamp(6rem,11vw,10rem) var(--pad)}
+.jr__grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(2.5rem,6vw,6rem);align-items:start}
+.jr__side{position:sticky;top:7rem}
+.jr__side h2{font-size:clamp(2.8rem,6.4vw,6rem)}
+.jr__side p{margin-top:1.4rem;max-width:22rem;color:var(--mute);font-size:1.06rem}
+.jr__side .btn{margin-top:2rem}
+.cab{position:relative;padding:clamp(.6rem,1vw,.9rem);border-radius:10px;background:linear-gradient(180deg,#0E1426,#0A0F1E);box-shadow:0 50px 80px -40px rgba(7,11,24,.7),0 2px 0 rgba(255,255,255,.04) inset}
+.cab::after{content:"";position:absolute;left:6%;right:6%;bottom:-14px;height:14px;border-radius:0 0 6px 6px;background:#070B18}
+.dr{display:block;position:relative;text-decoration:none;color:var(--paper);border-radius:4px;background:#2B2117;overflow:hidden;margin-top:clamp(.5rem,.8vw,.75rem);box-shadow:inset 0 10px 24px rgba(0,0,0,.55)}
+.dr:first-child{margin-top:0}
+.dr__in{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
+.dr.open .dr__in{grid-template-rows:1fr}
+.dr__in>div{min-height:0;overflow:hidden}
+.dr__inside{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.25rem;padding:1.1rem;background:linear-gradient(180deg,#C9A879,#B8925F);color:var(--ink)}
+.dr__img{position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden;background:#2a241d;box-shadow:0 10px 18px -8px rgba(43,33,23,.6)}
+.dr__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.2s var(--ease)}
+.dr.open .dr__img img{transform:none}
+.dr__txt{display:flex;flex-direction:column;justify-content:space-between;gap:1rem;padding:.2rem 0}
+.dr__txt p{font-size:1rem;line-height:1.45}
+.dr__read{display:inline-flex;align-items:center;gap:.6rem;font-weight:600}
+.dr__read i{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--ink);color:var(--paper);transition:transform .45s var(--ease)}
+.dr:hover .dr__read i{transform:rotate(45deg)}
+.dr__front{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1.25rem;min-height:clamp(7rem,13vw,9.5rem);padding:1rem clamp(1.1rem,2.4vw,2rem);
+  background:linear-gradient(90deg,rgba(255,255,255,.03),rgba(0,0,0,.15)),repeating-linear-gradient(90deg,rgba(255,255,255,.016) 0 2px,transparent 2px 7px,rgba(0,0,0,.05) 7px 9px,transparent 9px 17px),linear-gradient(180deg,#1E2435,#131828 60%,#0F1322);
+  box-shadow:inset 0 0 0 clamp(8px,1vw,14px) rgba(0,0,0,.16),inset 0 0 0 calc(clamp(8px,1vw,14px) + 1px) rgba(255,255,255,.05);
+  transition:transform .8s var(--ease),box-shadow .8s var(--ease)}
+.dr.open .dr__front{box-shadow:inset 0 0 0 clamp(8px,1vw,14px) rgba(0,0,0,.16),inset 0 0 0 calc(clamp(8px,1vw,14px) + 1px) rgba(255,255,255,.05),0 -18px 30px -12px rgba(0,0,0,.6)}
+.dr__date{font-size:.82rem;color:var(--soft);font-variant-numeric:tabular-nums;line-height:1.3;writing-mode:vertical-rl;rotate:180deg;padding-left:.25rem;border-left:1px solid rgba(236,235,231,.18)}
+.dr__title{font-family:var(--disp);font-weight:300;font-stretch:118%;font-size:clamp(1.35rem,2.5vw,2.3rem);letter-spacing:-.035em;line-height:1;text-transform:uppercase;color:rgba(236,235,231,.92);text-shadow:0 1px 0 rgba(255,255,255,.06),0 -1px 0 rgba(0,0,0,.6)}
+.dr__pull{position:relative;width:clamp(4.5rem,9vw,7rem);height:9px;border-radius:5px;background:linear-gradient(180deg,#d9dade,#8a8c92 60%,#4b4d52);box-shadow:0 8px 14px rgba(0,0,0,.55),0 2px 2px rgba(0,0,0,.4);transition:transform .6s var(--ease)}
+.dr:hover .dr__pull,.dr.open .dr__pull{transform:translateY(-2px)}
+.dr__cat{position:absolute;right:clamp(1.1rem,2.4vw,2rem);top:1rem;font-size:.75rem;color:var(--soft)}
+
+/* ---------- Footer ---------- */
+.ftr{position:relative;padding:clamp(5rem,9vw,8rem) var(--pad) 1.5rem;overflow:hidden}
+.ftr__top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3rem;align-items:end}
+.ftr__ask{font-family:var(--ui);font-weight:450;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.2;letter-spacing:-.03em;color:var(--soft)}
+.ftr__mail{display:inline-block;margin-top:.6rem;font-family:var(--disp);font-stretch:112%;font-weight:560;font-size:clamp(1.8rem,4.4vw,4rem);letter-spacing:-.045em;line-height:1.05;color:var(--paper);text-decoration:none;background:linear-gradient(var(--glow),var(--glow)) 0 100%/0 2px no-repeat;padding-bottom:.2rem;transition:background-size .6s var(--ease),color .4s var(--ease)}
+.ftr__mail:hover{background-size:100% 2px;color:var(--glow)}
+.ftr__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;color:var(--soft);font-size:.95rem}
+.ftr__cols h3{font-size:.8rem;font-weight:600;color:#7D86A3;margin-bottom:.8rem}
+.ftr__cols li+li{margin-top:.4rem}
+.ftr__cols a{text-decoration:none;color:var(--paper);background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease)}
+.ftr__cols a:hover{background-size:100% 1px}
+.word{display:flex;justify-content:space-between;margin-top:clamp(4rem,9vw,7rem);font-family:var(--disp);font-weight:300;font-stretch:125%;line-height:.78;letter-spacing:0;color:var(--paper);white-space:nowrap;user-select:none}
+.word span{display:block;flex:none;overflow:hidden;padding-bottom:.04em}
+.word b{display:block;font-weight:inherit;transform:translate3d(0,105%,0);transition:transform 1.2s var(--ease),color .5s var(--ease)}
+.word.in b{transform:none}
+.word span:hover b{transform:translate3d(0,-8%,0);color:var(--glow);transition-duration:.5s}
+.ftr__base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(236,235,231,.14);font-size:.85rem;color:#7D86A3}
+.status{display:inline-flex;align-items:center;gap:.55rem;padding:.45rem .85rem;border-radius:999px;background:rgba(236,235,231,.06);color:var(--paper)}
+.status i{width:.5rem;height:.5rem;border-radius:50%;background:#8A93AE}
+.status.open i{background:#7FD18B;box-shadow:0 0 0 0 rgba(127,209,139,.6);animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{70%{box-shadow:0 0 0 .55rem rgba(127,209,139,0)}100%{box-shadow:0 0 0 0 rgba(127,209,139,0)}}
+.totop{display:inline-flex;align-items:center;gap:.6rem;padding:0;border:0;background:none;color:var(--paper);font:500 .9rem var(--ui);cursor:pointer;min-height:2.75rem}
+.totop i{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(236,235,231,.35);transition:background-color .35s var(--ease),color .35s var(--ease),transform .45s var(--ease)}
+.totop:hover i{background:var(--paper);color:var(--ink);transform:translateY(-3px)}
+.ftr__social{display:flex;flex-wrap:wrap;gap:.5rem}
+.ftr__social a{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 1rem;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(236,235,231,.2);color:var(--paper);text-decoration:none;font-size:.88rem;transition:background-color .35s var(--ease),color .35s var(--ease)}
+.ftr__social a:hover{background:var(--paper);color:var(--ink)}
+.ftr__mid{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.25rem;margin-top:clamp(3rem,6vw,4.5rem)}
+.ftr__mid p{color:var(--soft);font-size:.95rem;max-width:26rem}
+
+@media (max-width:980px){
+  .jr__grid{grid-template-columns:1fr}
+  .jr__side{position:static}
+  .ftr__top{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .jr{padding:5rem var(--pad)}
+  .jr__side h2{font-size:2.6rem}
+  .dr__inside{grid-template-columns:1fr;padding:.8rem}
+  .dr__front{gap:.9rem;min-height:6.25rem;padding:.9rem 1rem}
+  .dr__title{font-size:1.15rem;line-height:1.1}
+  .dr__pull{width:3.25rem;height:7px}
+  .dr__cat{display:none}
+  .ftr{padding:4.5rem var(--pad) 1.25rem}
+  .ftr__cols{grid-template-columns:1fr 1fr}
+  .ftr__cols>div:last-child{grid-column:1/-1}
+  .ftr__base{flex-direction:column;align-items:flex-start}
+}
 
 /* ---------- Floating WhatsApp ---------- */
 .wa{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:90;display:inline-flex;align-items:center;gap:.6rem;min-height:3.2rem;padding:0 1.25rem 0 1rem;border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;font-size:.95rem;text-decoration:none;box-shadow:0 14px 30px -10px rgba(7,11,24,.6);opacity:0;transform:translate3d(0,1.5rem,0);pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease),background-color .3s var(--ease)}
@@ -318,10 +373,6 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   .acc__n{top:auto;left:auto;right:1.1rem;top:50%;transform:translateY(-50%)}
   .acc a.on .acc__n{top:1.1rem;transform:none}
   .spec,.mdf{grid-template-columns:1fr}
-  .post{grid-template-columns:minmax(0,1fr) 2.8rem}
-  .post time{grid-column:1/-1}
-  .post p{display:none}
-  .peek{display:none}
 }
 @media (max-width:640px){
   .spec dl{grid-template-columns:1fr}
@@ -438,12 +489,6 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   /* partners */
   .partners__head{flex-direction:column;gap:.25rem;margin-bottom:1.75rem}
   .lm__track{animation-duration:34s}
-  /* journal */
-  .jr{padding:5rem var(--pad)}
-  .jr__head h2{font-size:2.6rem}
-  .post{min-height:0;padding:1.1rem 0;gap:.4rem 1rem}
-  .post h3{font-size:1.35rem;line-height:1.05}
-  .post__th{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:.6rem;background:#2a241d}
   /* cta */
   .cta{min-height:0;padding:7rem var(--pad) 2rem}
   .cta h2{font-size:clamp(2.8rem,13vw,3.8rem)}
@@ -665,13 +710,27 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 
 <!-- Journal -->
 <section class="jr light" aria-labelledby="jr-h">
-  <div class="jr__head"><h2 class="disp" id="jr-h">Journal</h2><a href="https://www.millworkdc.com/blog/">All articles</a></div>
-  <div class="posts" id="posts">
-    <a class="post" href="https://www.millworkdc.com/frameless-vs-framed-cabinets-what-are-the-differences-between-european-and-american-style-cabinets/" data-img="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png" alt="" loading="lazy" decoding="async"><time datetime="2021-06-02">Jun 2, 2021</time><h3>Frameless vs. framed cabinets</h3><p>European and American styles, compared.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
-    <a class="post" href="https://www.millworkdc.com/commercial-spaces-dentist-office-smart-designs-for-modern-dentists/" data-img="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg" alt="" loading="lazy" decoding="async"><time datetime="2021-05-30">May 30, 2021</time><h3>Smart designs for dental offices</h3><p>Commercial cabinetry for modern practices.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
-    <a class="post" href="https://www.millworkdc.com/custom-closet-solution-start-your-day-in-an-organized-way/" data-img="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg" alt="" loading="lazy" decoding="async"><time datetime="2021-05-09">May 9, 2021</time><h3>Start your day organized</h3><p>What a custom closet changes about your mornings.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
+  <div class="jr__grid">
+    <div class="jr__side">
+      <h2 class="disp" id="jr-h">From the<br>journal.</h2>
+      <p>Notes from the workshop on cabinet styles, closet planning and commercial fit-outs. Open a drawer to read.</p>
+      <a class="btn btn--ink" href="https://www.millworkdc.com/blog/">All articles<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+    </div>
+    <div class="cab" id="cab">
+      <a class="dr open" href="https://www.millworkdc.com/frameless-vs-framed-cabinets-what-are-the-differences-between-european-and-american-style-cabinets/">
+        <div class="dr__in"><div><div class="dr__inside"><div class="dr__img"><img src="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png" alt="" loading="lazy" decoding="async"></div><div class="dr__txt"><p>European and American cabinet styles, compared: how they are built, how they look and which suits your kitchen.</p><span class="dr__read">Read article<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></span></div></div></div></div>
+        <div class="dr__front"><time class="dr__date" datetime="2021-06-02">Jun 2021</time><h3 class="dr__title">Frameless vs. framed cabinets</h3><span class="dr__pull" aria-hidden="true"></span><span class="dr__cat">Guide</span></div>
+      </a>
+      <a class="dr" href="https://www.millworkdc.com/commercial-spaces-dentist-office-smart-designs-for-modern-dentists/">
+        <div class="dr__in"><div><div class="dr__inside"><div class="dr__img"><img src="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg" alt="" loading="lazy" decoding="async"></div><div class="dr__txt"><p>How modern dental practices use custom cabinetry to keep treatment rooms calm, clean and organized.</p><span class="dr__read">Read article<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></span></div></div></div></div>
+        <div class="dr__front"><time class="dr__date" datetime="2021-05-30">May 2021</time><h3 class="dr__title">Smart designs for dental offices</h3><span class="dr__pull" aria-hidden="true"></span><span class="dr__cat">Commercial</span></div>
+      </a>
+      <a class="dr" href="https://www.millworkdc.com/custom-closet-solution-start-your-day-in-an-organized-way/">
+        <div class="dr__in"><div><div class="dr__inside"><div class="dr__img"><img src="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg" alt="" loading="lazy" decoding="async"></div><div class="dr__txt"><p>Your day starts with choosing what to wear. A closet planned around what you own makes that the easiest part.</p><span class="dr__read">Read article<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></span></div></div></div></div>
+        <div class="dr__front"><time class="dr__date" datetime="2021-05-09">May 2021</time><h3 class="dr__title">Start your day organized</h3><span class="dr__pull" aria-hidden="true"></span><span class="dr__cat">Closets</span></div>
+      </a>
+    </div>
   </div>
-  <div class="peek" aria-hidden="true"><img src="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png" alt=""></div>
 </section>
 
 <!-- 8. CTA -->
@@ -698,14 +757,27 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 </main>
 
 <footer class="ftr">
-  <svg class="ftr__word" viewBox="0 0 1000 150" aria-hidden="true" focusable="false"><text x="0" y="140" textLength="994" lengthAdjust="spacingAndGlyphs">MILLWORK</text></svg>
-  <div class="ftr__grid">
-    <div><p style="max-width:22rem">Custom closets and European frameless cabinets, manufactured in Lorton, Virginia.</p></div>
-    <div><h3>Explore</h3><ul><li><a href="https://www.millworkdc.com/inspiration/">Inspiration</a></li><li><a href="https://www.millworkdc.com/blog/">Journal</a></li><li><a href="https://www.millworkdc.com/faqs/">FAQs</a></li><li><a href="https://www.millworkdc.com/high-gloss-mdf-panels/">MDF panels</a></li></ul></div>
-    <div><h3>Company</h3><ul><li><a href="https://www.millworkdc.com/about-us/">About</a></li><li><a href="https://www.millworkdc.com/our-process/">Process</a></li><li><a href="https://www.millworkdc.com/our-warranty-policy/">Warranty</a></li><li><a href="https://www.millworkdc.com/privacy-policy/">Privacy policy</a></li></ul></div>
-    <div><h3>Follow</h3><ul><li><a href="https://www.instagram.com/millworkdc/">Instagram</a></li><li><a href="https://www.facebook.com/MillworkDC/">Facebook</a></li><li><a href="https://tr.pinterest.com/MillworkDC/">Pinterest</a></li><li><a href="https://www.youtube.com/channel/UCbeKPUHfmePXlh7CgbdDiNg">YouTube</a></li></ul></div>
+  <div class="ftr__top">
+    <div>
+      <p class="ftr__ask">Have a room in mind? Tell us about it.</p>
+      <a class="ftr__mail" href="mailto:info@millworkdc.com">info@millworkdc.com</a>
+    </div>
+    <div class="ftr__cols">
+      <div><h3>Explore</h3><ul><li><a href="#spaces">Spaces</a></li><li><a href="#features">Features</a></li><li><a href="https://www.millworkdc.com/inspiration/">Inspiration</a></li><li><a href="https://www.millworkdc.com/blog/">Journal</a></li></ul></div>
+      <div><h3>Company</h3><ul><li><a href="https://www.millworkdc.com/about-us/">About</a></li><li><a href="https://www.millworkdc.com/our-process/">Process</a></li><li><a href="https://www.millworkdc.com/our-warranty-policy/">Warranty</a></li><li><a href="https://www.millworkdc.com/faqs/">FAQs</a></li></ul></div>
+      <div><h3>Visit</h3><ul><li>7345 Lockport Pl</li><li>Lorton, VA 22079</li><li><a href="tel:+17036460909">703-646-0909</a></li></ul></div>
+    </div>
   </div>
-  <div class="ftr__base"><span>© 2026 Millwork Design Center</span><span>Lorton, Virginia</span></div>
+  <div class="ftr__mid">
+    <div class="ftr__social"><a href="https://www.instagram.com/millworkdc/">Instagram</a><a href="https://www.facebook.com/MillworkDC/">Facebook</a><a href="https://tr.pinterest.com/MillworkDC/">Pinterest</a><a href="https://www.youtube.com/channel/UCbeKPUHfmePXlh7CgbdDiNg">YouTube</a><a href="https://www.linkedin.com/company/millworkdc/about/">LinkedIn</a></div>
+    <p>Custom closets and European frameless cabinets, manufactured in Lorton, Virginia.</p>
+  </div>
+  <div class="word" id="word" aria-hidden="true"><span><b>M</b></span><span><b>I</b></span><span><b>L</b></span><span><b>L</b></span><span><b>W</b></span><span><b>O</b></span><span><b>R</b></span><span><b>K</b></span></div>
+  <div class="ftr__base">
+    <span class="status" id="status"><i></i><span>Workshop hours: Mon to Fri 8AM to 5PM, Sat 10AM to 2PM</span></span>
+    <span>© 2026 Millwork Design Center <a href="https://www.millworkdc.com/privacy-policy/" style="color:inherit;margin-left:1rem">Privacy policy</a></span>
+    <button class="totop" type="button" id="totop">Back to top<i><svg class="ic" aria-hidden="true" style="transform:rotate(-45deg)"><use href="#ne"/></svg></i></button>
+  </div>
 </footer>
 
 <a class="wa" id="wa" href="https://wa.me/17036460909" aria-label="Chat with Millwork on WhatsApp"><svg class="ic" aria-hidden="true"><use href="#wa-i"/></svg><span>WhatsApp</span></a>
@@ -739,18 +811,6 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   });
   /* MDF finish toggle */
   $$('.seg button').forEach(function(b,i,all){b.addEventListener('click',function(){all.forEach(function(x){x.setAttribute('aria-pressed',x===b);});mdf.classList.toggle('gloss',b.dataset.f==='gloss');});});
-  /* Journal hover preview */
-  var peek=$('.peek'),pimg=peek.querySelector('img');
-  if(matchMedia('(hover:hover)').matches&&!reduce){
-    var px=0,py=0,tx=0,ty=0,pr=0;
-    function pl(){px+=(tx-px)*.18;py+=(ty-py)*.18;peek.style.left=px.toFixed(1)+'px';peek.style.top=py.toFixed(1)+'px';if(peek.classList.contains('on')||Math.abs(tx-px)>.5)pr=requestAnimationFrame(pl);else pr=0;}
-    $$('.post').forEach(function(p){
-      p.addEventListener('mouseenter',function(e){pimg.src=p.dataset.img;tx=px=e.clientX+190;ty=py=e.clientY;peek.classList.add('on');if(!pr)pl();});
-      p.addEventListener('mousemove',function(e){tx=e.clientX+190;ty=e.clientY;});
-      p.addEventListener('mouseleave',function(){peek.classList.remove('on');});
-    });
-  }
-
   /* Word fills: split once, then only toggle classes that change */
   var fills=$$('[data-fill]').map(function(el){
     el.innerHTML=el.textContent.trim().split(/\s+/).map(function(w){return '<span class="w">'+w+'</span>';}).join(' ');
@@ -853,6 +913,51 @@ h1,h2,h3,p,figure,blockquote{margin:0}
     if(Math.abs(target-smooth)>vh*3)smooth=target;
     if(!running){running=true;requestAnimationFrame(tick);}
   }
+
+  /* Journal drawers: one open at a time; hover on desktop, first tap on touch */
+  var drs=$$('#cab .dr');
+  drs.forEach(function(d){
+    function open(){drs.forEach(function(x){x.classList.toggle('open',x===d);});}
+    if(!coarse)d.addEventListener('mouseenter',open);
+    d.addEventListener('focus',open);
+    d.addEventListener('click',function(e){if(!d.classList.contains('open')){e.preventDefault();open();}});
+  });
+
+  /* Footer wordmark: fit to width, letters rise when it comes into view */
+  var word=$('#word');
+  var wspans=[].slice.call(word.children);
+  function fitWord(){
+    word.style.fontSize='100px';
+    var total=0;wspans.forEach(function(sp){total+=sp.getBoundingClientRect().width;});
+    var avail=word.clientWidth,gap=avail*0.012*(wspans.length-1);
+    word.style.fontSize=Math.max(40,Math.floor(100*(avail-gap)/(total||1)))+'px';
+  }
+  fitWord();addEventListener('resize',fitWord);
+  if(document.fonts)document.fonts.ready.then(fitWord);addEventListener('load',fitWord);
+  $$('#word b').forEach(function(b,i){b.style.transitionDelay=(i*0.06)+'s';});
+  if('IntersectionObserver' in window&&!reduce){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){word.classList.add('in');setTimeout(function(){$$('#word b').forEach(function(b){b.style.transitionDelay='';});},1800);o.disconnect();}},{threshold:.3}).observe(word);}
+  else word.classList.add('in');
+
+  /* Live workshop status, in Virginia time */
+  (function(){
+    var st=$('#status');if(!st)return;
+    function upd(){
+      try{
+        var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+        var g={};parts.forEach(function(p){g[p.type]=p.value;});
+        var h=(+g.hour%24)+(+g.minute)/60,d=g.weekday,open=false,close='',next='';
+        if(['Mon','Tue','Wed','Thu','Fri'].indexOf(d)>-1){open=h>=8&&h<17;close='5PM';next=h<8?'today at 8AM':(d==='Fri'?'Saturday at 10AM':'tomorrow at 8AM');}
+        else if(d==='Sat'){open=h>=10&&h<14;close='2PM';next=h<10?'today at 10AM':'Monday at 8AM';}
+        else{next='Monday at 8AM';}
+        st.classList.toggle('open',open);
+        st.lastChild.textContent=open?'Workshop open now, until '+close+' (Virginia time)':'Workshop closed, opens '+next+' (Virginia time)';
+      }catch(e){}
+    }
+    upd();setInterval(upd,60000);
+  })();
+
+  /* Back to top */
+  $('#totop').addEventListener('click',function(){scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
 
   /* Mobile gallery: counter and bar follow the swipe */
   track.addEventListener('scroll',function(){
