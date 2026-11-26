@@ -225,6 +225,113 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .ftr a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .ftr__base{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;font-size:.82rem;color:#7D86A3}
 
+
+/* ---------- Features accordion ---------- */
+.feat{padding:clamp(6rem,11vw,10rem) var(--pad)}
+.feat__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem 3rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.feat__head h2{font-size:clamp(2.6rem,6vw,5.6rem)}
+.feat__head p{max-width:24rem;color:var(--soft);font-size:1.05rem}
+.acc{display:flex;gap:.6rem;height:clamp(28rem,72vh,42rem)}
+.acc a{position:relative;flex:1 1 0;min-width:0;border-radius:14px;overflow:hidden;background:#2a241d;color:#fff;text-decoration:none;isolation:isolate;contain:strict;transition:flex-grow .9s var(--ease)}
+.acc a.on{flex-grow:4.2}
+.acc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.15);transition:transform 1.2s var(--ease)}
+.acc a.on img{transform:scale(1)}
+.acc a::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,11,24,.35),rgba(7,11,24,.25) 40%,rgba(7,11,24,.9));transition:opacity .6s var(--ease)}
+.acc__n{position:absolute;top:1.1rem;left:1.1rem;font-size:.85rem;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.8)}
+.acc__v{position:absolute;left:50%;bottom:1.4rem;translate:-50% 0;writing-mode:vertical-rl;rotate:180deg;font-family:var(--disp);font-stretch:110%;font-weight:600;font-size:1.35rem;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;transition:opacity .4s var(--ease)}
+.acc a.on .acc__v{opacity:0}
+.acc__body{position:absolute;left:1.5rem;right:1.5rem;bottom:1.5rem;display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;opacity:0;transform:translate3d(0,20px,0);transition:opacity .5s var(--ease),transform .7s var(--ease)}
+.acc a.on .acc__body{opacity:1;transform:none;transition-delay:.25s}
+.acc__body h3{font-family:var(--disp);font-stretch:110%;font-weight:620;font-size:clamp(1.9rem,3.2vw,3rem);letter-spacing:-.045em;line-height:.95;text-transform:uppercase;white-space:nowrap}
+.acc__body p{margin-top:.7rem;max-width:22rem;color:rgba(255,255,255,.85);font-size:.98rem}
+.acc__go{display:grid;place-items:center;flex:none;width:3rem;height:3rem;border-radius:50%;background:var(--paper);color:var(--ink)}
+
+/* ---------- Full spec list ---------- */
+.spec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(2rem,6vw,6rem);padding:clamp(4rem,8vw,7rem) var(--pad) 0}
+.spec h2{font-size:clamp(2.2rem,4.6vw,4.2rem)}
+.spec__intro{margin-top:1.25rem;color:var(--soft);max-width:22rem}
+.spec dl{margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem;border-top:1px solid rgba(236,235,231,.16)}
+.spec dl div{padding:1.3rem 0;border-bottom:1px solid rgba(236,235,231,.16)}
+.spec dt{font-size:.88rem;color:var(--soft)}
+.spec dd{margin:.35rem 0 0;font-family:var(--disp);font-stretch:108%;font-weight:560;font-size:clamp(1.25rem,1.8vw,1.6rem);letter-spacing:-.03em;line-height:1.25}
+
+/* ---------- MDF panels ---------- */
+.mdf{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,6vw,6rem);align-items:center;padding:clamp(6rem,11vw,10rem) var(--pad);overflow:hidden;--mp:0}
+.mdf h2{font-size:clamp(2.6rem,5.8vw,5.4rem)}
+.mdf__txt p{margin-top:1.4rem;max-width:26rem;color:var(--mute);font-size:1.08rem}
+.seg{display:inline-flex;margin-top:2.2rem;padding:.3rem;border-radius:999px;background:#DCDAD4}
+.seg button{min-height:2.75rem;padding:0 1.3rem;border:0;border-radius:999px;background:none;color:var(--ink);font:500 .95rem/1 var(--ui);cursor:pointer;transition:background-color .35s var(--ease),color .35s var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.mdf__links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.mdf .btn--line{padding:0 1.3rem;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(10,18,48,.35)}
+.mdf .btn--line:hover{background:var(--ink);color:var(--paper)}
+.sheets{position:relative;display:flex;align-items:flex-end;gap:clamp(.35rem,.8vw,.7rem);height:clamp(22rem,60vh,36rem)}
+.sheets i{position:relative;flex:1;height:calc(70% + var(--h) * 30%);border-radius:4px 4px 2px 2px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(10,18,48,.14),0 30px 40px -28px rgba(10,18,48,.6);overflow:hidden;transform:translate3d(0,calc((1 - min(1,max(0,var(--mp) * 2.2 - var(--i) * .12))) * 75%),0);will-change:transform}
+.sheets i::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,.5) 34%,transparent 46%,transparent 60%,rgba(255,255,255,.2) 68%,transparent 78%);opacity:0;transition:opacity .6s var(--ease)}
+.mdf.gloss .sheets i::after{opacity:1}
+.sheets__cap{position:absolute;left:0;bottom:-2rem;font-size:.85rem;color:var(--mute)}
+
+/* ---------- Partners ---------- */
+.partners{padding:clamp(4rem,8vw,6rem) 0;border-top:1px solid rgba(236,235,231,.1)}
+.partners__head{display:flex;justify-content:space-between;gap:1rem;padding:0 var(--pad);margin-bottom:2.5rem;color:var(--soft);font-size:.95rem}
+.partners__head h2{font-family:var(--ui);font-size:1rem;font-weight:500;color:var(--paper)}
+.lm{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.lm__track{display:flex;width:max-content;animation:lm 46s linear infinite}
+.lm:hover .lm__track{animation-play-state:paused}
+.lm ul{display:flex;align-items:center;gap:clamp(3rem,6vw,5.5rem);padding-right:clamp(3rem,6vw,5.5rem)}
+.lm img{height:clamp(1.8rem,3vw,2.6rem);width:auto;filter:brightness(0) invert(1);opacity:.6;transition:opacity .3s var(--ease)}
+.lm img:hover{opacity:1}
+@keyframes lm{to{transform:translate3d(-50%,0,0)}}
+
+/* ---------- Journal ---------- */
+.jr{padding:clamp(6rem,11vw,10rem) var(--pad);position:relative}
+.jr__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.jr__head h2{font-size:clamp(2.6rem,6vw,5.6rem)}
+.jr__head a{color:var(--ink);text-underline-offset:5px;font-weight:500}
+.posts{border-top:1px solid var(--ink)}
+.post{display:grid;grid-template-columns:9rem minmax(0,1fr) minmax(0,18rem) 3rem;align-items:center;gap:1.5rem;min-height:7rem;padding:1rem 0;border-bottom:1px solid rgba(10,18,48,.18);text-decoration:none}
+.post time{font-size:.9rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.post h3{font-family:var(--disp);font-stretch:108%;font-weight:600;font-size:clamp(1.4rem,2.6vw,2.4rem);letter-spacing:-.04em;line-height:1;text-transform:uppercase;transition:transform .6s var(--ease)}
+.post p{color:var(--mute);font-size:.95rem}
+.post__go{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(10,18,48,.3);transition:background-color .35s var(--ease),color .35s var(--ease),transform .45s var(--ease)}
+.post:hover h3{transform:translate3d(.75rem,0,0)}
+.post:hover .post__go{background:var(--ink);color:var(--paper);transform:rotate(45deg)}
+.post__th{display:none}
+.peek{position:fixed;left:0;top:0;z-index:60;width:20rem;aspect-ratio:16/10;border-radius:12px;overflow:hidden;pointer-events:none;opacity:0;transform:translate3d(-50%,-50%,0) scale(.85);transition:opacity .3s var(--ease),transform .45s var(--ease);box-shadow:0 30px 60px -20px rgba(7,11,24,.55);background:#2a241d;will-change:transform,opacity}
+.peek.on{opacity:1;transform:translate3d(-50%,-50%,0) scale(1)}
+.peek img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- Floating WhatsApp ---------- */
+.wa{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:90;display:inline-flex;align-items:center;gap:.6rem;min-height:3.2rem;padding:0 1.25rem 0 1rem;border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;font-size:.95rem;text-decoration:none;box-shadow:0 14px 30px -10px rgba(7,11,24,.6);opacity:0;transform:translate3d(0,1.5rem,0);pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease),background-color .3s var(--ease)}
+.wa.show{opacity:1;transform:none;pointer-events:auto}
+.wa:hover{background:#fff}
+.wa svg{width:1.3rem;height:1.3rem}
+
+/* ---------- Film grain (static, one cheap layer) ---------- */
+.grain{position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+@media (max-width:980px){
+  .acc{flex-direction:column;height:auto}
+  .acc a,.acc a.on{flex:none;height:5.5rem;transition:height .8s var(--ease)}
+  .acc a.on{height:24rem}
+  .acc__v{writing-mode:horizontal-tb;rotate:none;left:1.1rem;translate:none;bottom:auto;top:50%;transform:translateY(-50%);font-size:1.3rem}
+  .acc__n{top:auto;left:auto;right:1.1rem;top:50%;transform:translateY(-50%)}
+  .acc a.on .acc__n{top:1.1rem;transform:none}
+  .spec,.mdf{grid-template-columns:1fr}
+  .post{grid-template-columns:minmax(0,1fr) 2.8rem}
+  .post time{grid-column:1/-1}
+  .post p{display:none}
+  .peek{display:none}
+}
+@media (max-width:640px){
+  .spec dl{grid-template-columns:1fr}
+  .sheets{height:18rem}
+  .acc__body h3{white-space:normal}
+  .wa span{display:none}
+  .wa{width:3.2rem;padding:0;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.lm__track{animation:none}.sheets i{transform:none}}
+
 /* Responsive */
 @media (max-width:980px){
   .hdr nav,.hdr .btn{display:none}
@@ -251,6 +358,110 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   .ftr__grid>div:first-child{grid-column:1/-1}
   .copy__btns .btn{flex:1 1 100%;justify-content:space-between}
 }
+
+/* ---------- Mobile pass ---------- */
+.step__img{display:none}
+@media (max-width:980px){
+  .proc__pin{display:none}
+  .step{min-height:0;opacity:1;padding:1.5rem 0 2.75rem}
+  .step__img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;margin:1rem 0 .25rem;background:#2a241d}
+  .step h3{margin-top:1.25rem}
+  .proc h2{margin-bottom:2.5rem}
+}
+@media (max-width:760px){
+  :root{--pad:1.25rem}
+  body{font-size:1rem}
+  .hdr{padding:.85rem var(--pad)}
+  .hdr .logo img{height:2.1rem}
+  /* doors */
+  .mark{font-size:10.5vw;letter-spacing:-.03em}
+  .door--l .mark{right:2.3rem}.door--r .mark{left:2.3rem}
+  .handle{height:6.5rem;width:7px}
+  .door--l .handle{right:1rem}.door--r .handle{left:1rem}
+  .cue{bottom:max(1.5rem,env(safe-area-inset-bottom))}
+  .copy{bottom:max(1.5rem,env(safe-area-inset-bottom));gap:1.25rem}
+  .copy h1{font-size:clamp(2.6rem,12.5vw,3.6rem)}
+  .copy__r p{font-size:1rem;margin-bottom:1.1rem}
+  .scrim{background:linear-gradient(0deg,rgba(7,11,24,.96) 0%,rgba(7,11,24,.75) 45%,rgba(7,11,24,.2) 80%)}
+  /* intro */
+  .intro{padding:5rem var(--pad) 4rem}
+  .intro__big{font-size:1.65rem;line-height:1.3}
+  .facts{margin-top:3rem}
+  .facts b{font-size:2.4rem}
+  /* gallery: native swipe instead of a pinned scroll */
+  .hz{height:auto!important}
+  .hz__stage{position:relative;height:auto;min-height:0;padding:4.5rem 0 1rem}
+  .hz__head{flex-direction:row;align-items:flex-end}
+  .hz__head h2{font-size:2.5rem}
+  .track{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;padding-bottom:.25rem}
+  .track::-webkit-scrollbar{display:none}
+  .slide,.slide:nth-child(even),.slide--end{width:82vw!important;height:min(30rem,62svh);scroll-snap-align:start;flex:none}
+  .slide img{left:0;width:100%;transform:none!important}
+  .slide h3{font-size:1.9rem}
+  .hz__bar{margin-top:1.25rem}
+  /* features */
+  .feat{padding:5rem var(--pad)}
+  .feat__head h2{font-size:2.6rem}
+  .acc{gap:.5rem}
+  .acc a,.acc a.on{height:4.75rem}
+  .acc a.on{height:22rem}
+  .acc__v{font-size:1.15rem}
+  .acc__body{left:1.1rem;right:1.1rem;bottom:1.1rem}
+  .acc__body h3{font-size:1.9rem}
+  /* video word */
+  .vt{height:220svh}
+  .vt__mask span{font-size:21vw}
+  .vt__label{translate:0 calc(-50% + 4.5rem)}
+  .vt__copy h2{font-size:2.4rem}
+  .vt__copy p{font-size:1rem}
+  /* process */
+  .proc{padding:5rem var(--pad)}
+  .proc h2{font-size:2.6rem}
+  .step h3{font-size:2rem}
+  .step p{font-size:1rem}
+  /* marquee + spec */
+  .mq{padding-top:3.5rem}
+  .mq__row span{font-size:2.4rem;gap:1.5rem}
+  .mq__row{gap:1.5rem}
+  .spec{padding-top:3rem;gap:1.75rem}
+  .spec h2{font-size:2.4rem}
+  .spec dd{font-size:1.2rem}
+  /* mdf */
+  .mdf{padding:5rem var(--pad);gap:2.5rem}
+  .mdf h2{font-size:2.6rem}
+  .mdf__links .btn{flex:1 1 100%;justify-content:space-between}
+  .mdf__links .btn--line{justify-content:center}
+  .sheets{height:15rem;margin-bottom:2rem}
+  /* review */
+  .rev{padding:5rem var(--pad);gap:2rem}
+  .rev blockquote{font-size:1.5rem;line-height:1.35}
+  /* partners */
+  .partners__head{flex-direction:column;gap:.25rem;margin-bottom:1.75rem}
+  .lm__track{animation-duration:34s}
+  /* journal */
+  .jr{padding:5rem var(--pad)}
+  .jr__head h2{font-size:2.6rem}
+  .post{min-height:0;padding:1.1rem 0;gap:.4rem 1rem}
+  .post h3{font-size:1.35rem;line-height:1.05}
+  .post__th{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:.6rem;background:#2a241d}
+  /* cta */
+  .cta{min-height:0;padding:7rem var(--pad) 2rem}
+  .cta h2{font-size:clamp(2.8rem,13vw,3.8rem)}
+  .cta__row p{font-size:1rem}
+  .contact{gap:1.25rem;margin-top:3rem}
+  .ftr__word{padding-top:2.5rem}
+  .ftr__grid{gap:1.75rem}
+  .ftr__base{flex-direction:column;gap:.35rem}
+  .btn{min-height:3rem}
+  .wa{width:3rem;height:3rem;min-height:3rem}
+  .grain{display:none}
+}
+@media (max-width:360px){
+  .copy h1{font-size:2.4rem}
+  .hz__head h2,.feat__head h2,.proc h2,.mdf h2,.jr__head h2{font-size:2.2rem}
+}
+.wa.away{opacity:0;transform:translate3d(0,1.5rem,0);pointer-events:none}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -261,15 +472,18 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   <symbol id="ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
   <symbol id="menu" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16"/></symbol>
   <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="wa-i" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></symbol>
   <symbol id="st" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
 </svg>
 
 <a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
 
 <header class="hdr" id="hdr">
   <a class="logo" href="#main" aria-label="Millwork Design Center, home"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="Millwork Design Center" width="146" height="40"></a>
   <nav aria-label="Main">
     <a href="#spaces">Spaces</a>
+    <a href="#features">Features</a>
     <a href="#process">Process</a>
     <a href="https://www.millworkdc.com/inspiration/">Inspiration</a>
     <a href="https://www.millworkdc.com/about-us/">About</a>
@@ -279,7 +493,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   <button class="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#menu"/></svg></button>
 </header>
 <div class="sheet" id="sheet">
-  <a href="#spaces">Spaces</a><a href="#process">Process</a><a href="https://www.millworkdc.com/inspiration/">Inspiration</a><a href="https://www.millworkdc.com/about-us/">About</a><a href="#contact">Contact</a>
+  <a href="#spaces">Spaces</a><a href="#features">Features</a><a href="#process">Process</a><a href="https://www.millworkdc.com/inspiration/">Inspiration</a><a href="https://www.millworkdc.com/about-us/">About</a><a href="#contact">Contact</a>
   <a class="btn btn--glow" href="https://www.millworkdc.com/contact/">Free consultation<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
 </div>
 
@@ -339,6 +553,23 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   </div>
 </section>
 
+
+<!-- Features -->
+<section class="feat" id="features" aria-labelledby="ft-h">
+  <div class="feat__head">
+    <h2 class="disp" id="ft-h">Choose every<br>detail.</h2>
+    <p>Materials, doors, trims, accessories and hardware are picked with you, then built to that exact order.</p>
+  </div>
+  <div class="acc" id="acc">
+      <a class="on" href="https://www.millworkdc.com/materials/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/1-materials.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="acc__n">01</span><span class="acc__v">Materials</span><div class="acc__body"><div><h3>Materials</h3><p>Panels and boards chosen for the room and how hard it works.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="" href="https://www.millworkdc.com/colors-and-doors/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/2-colors.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="acc__n">02</span><span class="acc__v">Colors & doors</span><div class="acc__body"><div><h3>Colors & doors</h3><p>Door styles and finishes to match the rest of the house.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="" href="https://www.millworkdc.com/trims/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/4-trims.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="acc__n">03</span><span class="acc__v">Trims</span><div class="acc__body"><div><h3>Trims</h3><p>Trims and fillers for a true built-in finish.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="" href="https://www.millworkdc.com/accessories-2/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/5-accessories.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="acc__n">04</span><span class="acc__v">Accessories</span><div class="acc__body"><div><h3>Accessories</h3><p>Organizers and extensions for drawers and shelves.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="" href="https://www.millworkdc.com/hardware-2/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/6-hardwares.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="acc__n">05</span><span class="acc__v">Hardware</span><div class="acc__body"><div><h3>Hardware</h3><p>BLUM soft-close glides and hinges as standard.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="" href="https://www.millworkdc.com/craftsmanship/"><img src="https://www.millworkdc.com/wp-content/uploads/2021/11/craftmhome.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 40%"><span class="acc__n">06</span><span class="acc__v">Craftsmanship</span><div class="acc__body"><div><h3>Craftsmanship</h3><p>Cut, edge-banded and checked in our Lorton workshop.</p></div><span class="acc__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+  </div>
+</section>
+
 <!-- 4. Video through type -->
 <section class="vt" id="vt" aria-labelledby="vt-h">
   <div class="vt__stage" id="vtStage">
@@ -366,18 +597,53 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   <div>
     <h2 class="disp" id="pr-h">From first<br>measure to<br>final screw.</h2>
     <ol>
-      <li class="step on"><span class="step__n">01</span><h3>Consult</h3><p>We talk through the room, how you use it, your budget and the look you want.</p></li>
-      <li class="step"><span class="step__n">02</span><h3>Measure and design</h3><p>Precise measurements and a design you sign off, so every panel arrives pre-cut and ready.</p></li>
-      <li class="step"><span class="step__n">03</span><h3>Build</h3><p>Made in Lorton with BLUM soft-close glides and hinges and 1 mm edge banding on every exposed side.</p></li>
-      <li class="step"><span class="step__n">04</span><h3>Install</h3><p>Delivered with a complete hardware kit and installed by professionals, fast.</p></li>
+      <li class="step on"><span class="step__n">01</span><img class="step__img" src="https://www.millworkdc.com/wp-content/uploads/2021/06/Welcome-to-Millwork.jpg" alt="" loading="lazy" decoding="async"><h3>Consult</h3><p>We talk through the room, how you use it, your budget and the look you want.</p></li>
+      <li class="step"><span class="step__n">02</span><img class="step__img" src="https://www.millworkdc.com/wp-content/uploads/2021/06/1-materials.jpg" alt="" loading="lazy" decoding="async"><h3>Measure and design</h3><p>Precise measurements and a design you sign off, so every panel arrives pre-cut and ready.</p></li>
+      <li class="step"><span class="step__n">03</span><img class="step__img" src="https://www.millworkdc.com/wp-content/uploads/2021/11/craftmhome.jpg" alt="" loading="lazy" decoding="async"><h3>Build</h3><p>Made in Lorton with BLUM soft-close glides and hinges and 1 mm edge banding on every exposed side.</p></li>
+      <li class="step"><span class="step__n">04</span><img class="step__img" src="https://www.millworkdc.com/wp-content/uploads/2014/08/closet-by.jpg" alt="" loading="lazy" decoding="async"><h3>Install</h3><p>Delivered with a complete hardware kit and installed by professionals, fast.</p></li>
     </ol>
   </div>
 </section>
 
 <!-- 6. Spec marquee -->
-<section class="mq" aria-label="Standard specification">
+<section class="mq" aria-labelledby="mq-h" style="padding-bottom:clamp(5rem,9vw,8rem)"><h2 class="sr" id="mq-h">Standard specification</h2>
   <div class="mq__row" data-dir="-1"><span>BLUM soft-close</span><span>1 mm edge banding</span><span>84 in standard height</span><span>BLUM soft-close</span><span>1 mm edge banding</span><span>84 in standard height</span></div>
   <div class="mq__row mq__row--o" data-dir="1"><span>Rated to 1,000 lb</span><span>Full hardware kit</span><span>Preset or custom</span><span>Rated to 1,000 lb</span><span>Full hardware kit</span><span>Preset or custom</span></div>
+  <div class="spec">
+    <div>
+      <h2 class="disp">The standard spec.</h2>
+      <p class="spec__intro">What goes into every Millwork closet and cabinet, before you add a single option.</p>
+    </div>
+    <dl>
+      <div><dt>Standard closet</dt><dd>84 in high, 14 in deep</dd></div>
+      <div><dt>Drawer glides</dt><dd>BLUM undermount, soft-close</dd></div>
+      <div><dt>Door hinges</dt><dd>BLUM, soft-close</dd></div>
+      <div><dt>Edge banding</dt><dd>1 mm on all exposed sides</dd></div>
+      <div><dt>Wall and floor units</dt><dd>Rated up to 1,000 lb</dd></div>
+      <div><dt>Delivery</dt><dd>Complete package with hardware kit</dd></div>
+      <div><dt>Add-ons</dt><dd>Wide range of organizers and extensions</dd></div>
+      <div><dt>Design</dt><dd>Preset layouts, changed until they fit</dd></div>
+    </dl>
+  </div>
+
+</section>
+
+
+<!-- MDF panels -->
+<section class="mdf light" id="mdf" aria-labelledby="mdf-h">
+  <div class="mdf__txt">
+    <h2 class="disp" id="mdf-h">Need just the panels?</h2>
+    <p>Alongside closets and cabinets, we sell standard-quality MDF panels in almost 20 colors, in high gloss or soft touch.</p>
+    <div class="seg" role="group" aria-label="Finish preview">
+      <button type="button" aria-pressed="false" data-f="gloss">High gloss</button>
+      <button type="button" aria-pressed="true" data-f="soft">Soft touch</button>
+    </div>
+    <div class="mdf__links">
+      <a class="btn btn--ink" href="https://www.millworkdc.com/high-gloss-mdf-panels/">High gloss panels<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+      <a class="btn btn--line" href="https://www.millworkdc.com/soft-touch-mdf-panels/">Soft touch panels</a>
+    </div>
+  </div>
+  <div class="sheets" aria-hidden="true"><i style="--c:#F1EFEA;--h:0.4;--i:0"></i><i style="--c:#D9CFC0;--h:0.7;--i:1"></i><i style="--c:#C9B79C;--h:0.55;--i:2"></i><i style="--c:#8E6A4B;--h:0.9;--i:3"></i><i style="--c:#7D8A79;--h:0.65;--i:4"></i><i style="--c:#5E6F8C;--h:1;--i:5"></i><i style="--c:#1F2B47;--h:0.8;--i:6"></i><i style="--c:#3A3A3C;--h:0.6;--i:7"></i><i style="--c:#B8574A;--h:0.85;--i:8"></i><i style="--c:#E2C45E;--h:0.5;--i:9"></i><span class="sheets__cap">Colors shown are illustrative. Ask for samples.</span></div>
 </section>
 
 <!-- 7. Review -->
@@ -389,6 +655,24 @@ h1,h2,h3,p,figure,blockquote{margin:0}
     <br><a href="https://www.millworkdc.com/testimonials/">Read more reviews</a>
   </figcaption>
 </figure>
+
+
+<!-- Partners -->
+<section class="partners" aria-labelledby="pt-h">
+  <div class="partners__head"><h2 id="pt-h">Built with our partners</h2><span>Materials and hardware we trust</span></div>
+  <div class="lm"><div class="lm__track"><ul><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/1.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/2.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/3.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/4.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/5.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/6.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/7.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/8.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/9.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/10.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/11.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/12.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/13.png" alt="Partner logo" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/14.png" alt="Partner logo" loading="lazy" decoding="async"></li></ul><ul aria-hidden="true"><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/1.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/2.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/3.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/4.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/5.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/6.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/7.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/8.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/9.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/10.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/11.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/12.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/13.png" alt="" loading="lazy" decoding="async"></li><li><img src="https://www.millworkdc.com/wp-content/uploads/2021/06/14.png" alt="" loading="lazy" decoding="async"></li></ul></div></div>
+</section>
+
+<!-- Journal -->
+<section class="jr light" aria-labelledby="jr-h">
+  <div class="jr__head"><h2 class="disp" id="jr-h">Journal</h2><a href="https://www.millworkdc.com/blog/">All articles</a></div>
+  <div class="posts" id="posts">
+    <a class="post" href="https://www.millworkdc.com/frameless-vs-framed-cabinets-what-are-the-differences-between-european-and-american-style-cabinets/" data-img="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png" alt="" loading="lazy" decoding="async"><time datetime="2021-06-02">Jun 2, 2021</time><h3>Frameless vs. framed cabinets</h3><p>European and American styles, compared.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
+    <a class="post" href="https://www.millworkdc.com/commercial-spaces-dentist-office-smart-designs-for-modern-dentists/" data-img="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg" alt="" loading="lazy" decoding="async"><time datetime="2021-05-30">May 30, 2021</time><h3>Smart designs for dental offices</h3><p>Commercial cabinetry for modern practices.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
+    <a class="post" href="https://www.millworkdc.com/custom-closet-solution-start-your-day-in-an-organized-way/" data-img="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg"><img class="post__th" src="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg" alt="" loading="lazy" decoding="async"><time datetime="2021-05-09">May 9, 2021</time><h3>Start your day organized</h3><p>What a custom closet changes about your mornings.</p><span class="post__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></a>
+  </div>
+  <div class="peek" aria-hidden="true"><img src="https://www.millworkdc.com/wp-content/uploads/2014/08/framed-vs-frameless-construction-780x440.png" alt=""></div>
+</section>
 
 <!-- 8. CTA -->
 <section class="cta" id="contact" aria-labelledby="cta-h">
@@ -424,6 +708,8 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   <div class="ftr__base"><span>© 2026 Millwork Design Center</span><span>Lorton, Virginia</span></div>
 </footer>
 
+<a class="wa" id="wa" href="https://wa.me/17036460909" aria-label="Chat with Millwork on WhatsApp"><svg class="ic" aria-hidden="true"><use href="#wa-i"/></svg><span>WhatsApp</span></a>
+
 <script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -443,6 +729,27 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   var simgs=slides.map(function(s){return s.querySelector('img');});
   var vt=$('#vt'),vtStage=$('#vtStage'),vtWord=$('#vtWord');
   var rows=$$('.mq__row'),mq=$('.mq');
+  var mdf=$('#mdf'),wa=$('#wa');
+  /* Features accordion */
+  var accs=$$('#acc a');
+  accs.forEach(function(a){
+    function act(){accs.forEach(function(b){b.classList.toggle('on',b===a);});}
+    if(!coarse)a.addEventListener('mouseenter',act);a.addEventListener('focus',act);
+    a.addEventListener('click',function(e){if(!a.classList.contains('on')){e.preventDefault();act();}});
+  });
+  /* MDF finish toggle */
+  $$('.seg button').forEach(function(b,i,all){b.addEventListener('click',function(){all.forEach(function(x){x.setAttribute('aria-pressed',x===b);});mdf.classList.toggle('gloss',b.dataset.f==='gloss');});});
+  /* Journal hover preview */
+  var peek=$('.peek'),pimg=peek.querySelector('img');
+  if(matchMedia('(hover:hover)').matches&&!reduce){
+    var px=0,py=0,tx=0,ty=0,pr=0;
+    function pl(){px+=(tx-px)*.18;py+=(ty-py)*.18;peek.style.left=px.toFixed(1)+'px';peek.style.top=py.toFixed(1)+'px';if(peek.classList.contains('on')||Math.abs(tx-px)>.5)pr=requestAnimationFrame(pl);else pr=0;}
+    $$('.post').forEach(function(p){
+      p.addEventListener('mouseenter',function(e){pimg.src=p.dataset.img;tx=px=e.clientX+190;ty=py=e.clientY;peek.classList.add('on');if(!pr)pl();});
+      p.addEventListener('mousemove',function(e){tx=e.clientX+190;ty=e.clientY;});
+      p.addEventListener('mouseleave',function(){peek.classList.remove('on');});
+    });
+  }
 
   /* Word fills: split once, then only toggle classes that change */
   var fills=$$('[data-fill]').map(function(el){
@@ -455,12 +762,15 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   function docTop(el){var t=0;while(el){t+=el.offsetTop;el=el.offsetParent;}return t;}
   function layout(){
     vh=innerHeight;vw=innerWidth;
+    mobile=mobQ.matches;
     trackW=track.scrollWidth;
-    hz.style.height=Math.round(trackW-vw+vh)+'px';
+    hz.style.height=mobile?'':Math.round(trackW-vw+vh)+'px';
     G.doors={t:docTop(doors),h:doors.offsetHeight};
     G.hz={t:docTop(hz),h:hz.offsetHeight};
     G.vt={t:docTop(vt),h:vt.offsetHeight};
     G.mq={t:docTop(mq),h:mq.offsetHeight};
+    G.mdf={t:docTop(mdf),h:mdf.offsetHeight};
+    G.cta={t:docTop($('#contact'))};
     slideX=slides.map(function(s){return {x:s.offsetLeft,w:s.offsetWidth};});
     fills.forEach(function(f){f.top=docTop(f.el);f.h=f.el.offsetHeight;});
     var r=vtWord.getBoundingClientRect(),m=vtWord.parentNode.getBoundingClientRect();
@@ -470,6 +780,8 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 
   /* Smoothed scroll value: motion eases toward the scroll position instead of jumping per wheel notch */
   var target=scrollY,smooth=scrollY,running=false,lastY=scrollY,prev={};
+  var coarse=matchMedia('(pointer: coarse)').matches,mobile=false,ease=coarse?1:.14;
+  var mobQ=matchMedia('(max-width: 760px)');
   function set(el,k,v){var key=k+(el.id||el.className);if(prev[key]===v)return;prev[key]=v;el.style.setProperty(k,v);}
 
   function render(y){
@@ -482,7 +794,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
       copy.classList.toggle('live',c>.6);
     }
     /* gallery */
-    if(y>G.hz.t-vh&&y<G.hz.t+G.hz.h){
+    if(!mobile&&y>G.hz.t-vh&&y<G.hz.t+G.hz.h){
       var hp=prog(G.hz,y),dx=(trackW-vw)*hp,idx=0;
       track.style.transform='translate3d('+(-dx).toFixed(1)+'px,0,0)';
       set(bar,'--p',hp.toFixed(4));
@@ -506,6 +818,8 @@ h1,h2,h3,p,figure,blockquote{margin:0}
       rows[0].style.transform='translate3d('+(-mp*40).toFixed(2)+'%,0,0)';
       rows[1].style.transform='translate3d('+(-40+mp*40).toFixed(2)+'%,0,0)';
     }
+    /* MDF sheets rise in */
+    if(y>G.mdf.t-vh&&y<G.mdf.t+G.mdf.h){set(mdf,'--mp',clamp((y+vh-G.mdf.t)/(vh*1.1),0,1).toFixed(3));}
     /* word fills */
     fills.forEach(function(f){
       if(y<f.top-vh||y>f.top+f.h+vh)return;
@@ -518,6 +832,8 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   }
 
   function headerState(y){
+    wa.classList.toggle('show',y>G.doors.t+G.doors.h-vh*.5);
+    wa.classList.toggle('away',y>G.cta.t-vh*.6);
     hdr.classList.toggle('solid',y>vh*1.6);
     if(y>vh*2.6&&y>lastY+4&&!sheet.classList.contains('open'))hdr.classList.add('hide');
     else if(y<lastY-4||y<vh*2.6)hdr.classList.remove('hide');
@@ -525,7 +841,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   }
 
   function tick(){
-    smooth+= (target-smooth)*.14;
+    smooth+= (target-smooth)*ease;
     if(Math.abs(target-smooth)<.5)smooth=target;
     render(smooth);
     if(smooth!==target)requestAnimationFrame(tick);else running=false;
@@ -537,6 +853,15 @@ h1,h2,h3,p,figure,blockquote{margin:0}
     if(Math.abs(target-smooth)>vh*3)smooth=target;
     if(!running){running=true;requestAnimationFrame(tick);}
   }
+
+  /* Mobile gallery: counter and bar follow the swipe */
+  track.addEventListener('scroll',function(){
+    if(!mobile)return;
+    var max=track.scrollWidth-track.clientWidth,p=max>0?track.scrollLeft/max:0;
+    bar.style.setProperty('--p',p.toFixed(3));
+    var i=Math.round(track.scrollLeft/(slides[0].offsetWidth+parseFloat(getComputedStyle(track).columnGap||16)));
+    cur.textContent=('0'+Math.min(slides.length,i+1)).slice(-2);
+  },{passive:true});
 
   /* Process: active step via IntersectionObserver, no scroll math */
   var steps=$$('.step'),pimgs=$$('.proc__pin img'),ptag=$('#ptag');
@@ -566,6 +891,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 
   /* Resize: mobile URL-bar show/hide only changes height, so ignore it unless width changes */
   var lastW=vw,rz;
+  mobQ.addEventListener&&mobQ.addEventListener('change',function(){layout();render(smooth=target=scrollY);});
   addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){if(innerWidth!==lastW||Math.abs(innerHeight-vh)>160){lastW=innerWidth;layout();render(smooth=target=scrollY);}},150);});
   addEventListener('scroll',onScroll,{passive:true});
 
