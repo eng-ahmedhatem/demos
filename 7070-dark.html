@@ -60,7 +60,9 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .hdr{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;gap:1rem;padding:1.1rem var(--pad);transition:background-color .5s var(--ease),transform .5s var(--ease),color .5s var(--ease)}
 .hdr.solid{background:rgba(7,11,24,.94)}
 .hdr.hide{transform:translateY(-110%)}
-.hdr .logo img{height:2.5rem;width:auto;filter:brightness(0) invert(1)}
+.logo-plate{display:inline-flex;align-items:center;padding:.4rem .75rem;border-radius:12px;background:#F7F6F2;box-shadow:0 6px 18px -8px rgba(0,0,0,.45)}
+.logo-plate img{display:block;height:2.6rem;width:auto}
+.hdr .logo{display:block;border-radius:12px}
 .hdr nav{display:flex;gap:.25rem;margin-left:auto}
 .hdr nav a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .95rem;border-radius:999px;font-size:.94rem;font-weight:500;text-decoration:none;transition:background-color .3s var(--ease)}
 .hdr nav a:hover{background:rgba(236,235,231,.12)}
@@ -356,6 +358,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 /* ---------- Footer ---------- */
 .ftr{position:relative;padding:clamp(5rem,9vw,8rem) var(--pad) 1.5rem;overflow:hidden}
 .ftr__top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3rem;align-items:end}
+.ftr__logo{margin-bottom:2rem}
 .ftr__ask{font-family:var(--ui);font-weight:450;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.2;letter-spacing:-.03em;color:var(--soft)}
 .ftr__mail{display:inline-block;margin-top:.6rem;font-family:var(--disp);font-stretch:112%;font-weight:560;font-size:clamp(1.8rem,4.4vw,4rem);letter-spacing:-.045em;line-height:1.05;color:var(--paper);text-decoration:none;background:linear-gradient(var(--glow),var(--glow)) 0 100%/0 2px no-repeat;padding-bottom:.2rem;transition:background-size .6s var(--ease),color .4s var(--ease)}
 .ftr__mail:hover{background-size:100% 2px;color:var(--glow)}
@@ -466,7 +469,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .loader__num{font-family:var(--disp);font-weight:300;font-stretch:125%;font-size:clamp(4rem,12vw,8.5rem);line-height:.8;letter-spacing:-.05em;color:var(--paper);font-variant-numeric:tabular-nums}
 .loader__num small{font-size:.32em;font-weight:500;color:var(--glow);margin-left:.15em;letter-spacing:0}
 .loader__brand{text-align:right;font-size:.82rem;line-height:1.5;color:var(--soft)}
-.loader__brand b{display:block;font-family:var(--disp);font-stretch:118%;font-weight:500;font-size:1rem;letter-spacing:.02em;color:var(--paper)}
+.loader__brand .logo-plate img{height:2.4rem}
 .tape{position:relative;height:3.6rem;display:flex;align-items:center}
 .tape__case{position:relative;z-index:2;flex:none;width:3.6rem;height:3.6rem;border-radius:14px;background:linear-gradient(145deg,#3a4256,#161b2b 60%,#0d1120);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 14px 24px -10px rgba(0,0,0,.8);display:grid;place-items:center}
 .tape__case::before{content:"";width:1.5rem;height:1.5rem;border-radius:50%;background:radial-gradient(circle,#0b0f1c 30%,#2a3145 32%,#2a3145 52%,#0b0f1c 54%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
@@ -544,7 +547,8 @@ html.loading,html.loading body{overflow:hidden}
   :root{--pad:1.25rem}
   body{font-size:1rem}
   .hdr{padding:.85rem var(--pad)}
-  .hdr .logo img{height:2.1rem}
+  .logo-plate{padding:.32rem .6rem;border-radius:10px}
+  .logo-plate img{height:2.15rem}
   /* doors */
   .mark{font-size:10.5vw;letter-spacing:-.03em}
   .door--l .mark{right:2.3rem}.door--r .mark{left:2.3rem}
@@ -643,7 +647,7 @@ html.loading,html.loading body{overflow:hidden}
 
 <a class="skip" href="#main">Skip to content</a>
 <div class="loader" id="loader" aria-hidden="true"><div class="loader__in">
-  <div class="loader__top"><div class="loader__num"><span id="lnum">0</span><small>in</small></div><div class="loader__brand"><b>MILLWORK</b>Design Center</div></div>
+  <div class="loader__top"><div class="loader__num"><span id="lnum">0</span><small>in</small></div><div class="loader__brand"><span class="logo-plate"><img src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="" decoding="async"></span></div></div>
   <div class="tape"><div class="tape__case"></div><div class="tape__blade"><span style="left:14.286%">12</span><span style="left:28.571%">24</span><span style="left:42.857%">36</span><span style="left:57.143%">48</span><span style="left:71.429%">60</span><span style="left:85.714%">72</span></div><i class="tape__hook"></i></div>
   <div class="loader__cap"><span>Made to measure</span><span>Lorton, Virginia</span></div>
 </div></div>
@@ -651,7 +655,7 @@ html.loading,html.loading body{overflow:hidden}
 <div class="cur" id="cur" aria-hidden="true"></div>
 
 <header class="hdr" id="hdr">
-  <a class="logo" href="#main" aria-label="Millwork Design Center, home"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="Millwork Design Center" width="146" height="40"></a>
+  <a class="logo logo-plate" href="#main" aria-label="Millwork Design Center, home"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="Millwork Design Center" width="146" height="40"></a>
   <nav aria-label="Main">
     <a href="#spaces">Spaces</a>
     <a href="#features">Features</a>
@@ -884,6 +888,7 @@ html.loading,html.loading body{overflow:hidden}
 <footer class="ftr">
   <div class="ftr__top">
     <div>
+      <span class="logo-plate ftr__logo"><img src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="Millwork Design Center" loading="lazy" decoding="async"></span>
       <p class="ftr__ask">Have a room in mind? Tell us about it.</p>
       <a class="ftr__mail" href="mailto:info@millworkdc.com">info@millworkdc.com</a>
     </div>
