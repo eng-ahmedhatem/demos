@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070B18">
+<title>Millwork Design Center | Custom closets and cabinets, made in Lorton VA</title>
+<meta name="description" content="Custom closets and European frameless cabinets, designed with you, manufactured in Lorton, Virginia and professionally installed.">
+<link rel="icon" href="https://www.millworkdc.com/wp-content/uploads/2014/08/cropped-favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Archivo:wdth,wght@62..125,200..800&display=swap" rel="stylesheet">
+<style>
+html,body{background:#070B18}
+:root{
+  --night:#070B18;
+  --navy:#0B1D4F;
+  --steel:#1A2238;
+  --paper:#ECEBE7;
+  --ink:#0A1230;
+  --soft:#A9B0C4;
+  --mute:#4D5570;
+  --glow:#F4D7A1;
+  --blue:#3B74D0;
+  --ui:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --disp:"Archivo","Inter Tight",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(1.25rem,4vw,3.5rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--ui);font-size:1rem;line-height:1.55;color:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,p,figure,blockquote{margin:0}
+::selection{background:var(--glow);color:var(--ink)}
+:focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:4px}
+.light :focus-visible{outline-color:var(--navy)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:1rem;top:-5rem;z-index:300;background:var(--paper);color:var(--ink);padding:.7rem 1rem;border-radius:999px;font-weight:600;text-decoration:none}
+.skip:focus{top:1rem}
+.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.disp{font-family:var(--disp);font-weight:620;font-stretch:108%;letter-spacing:-.05em;line-height:.88;text-transform:uppercase}
+.light{background:var(--paper);color:var(--ink)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.75rem;min-height:3rem;padding:0 .45rem 0 1.3rem;border-radius:999px;font:500 .96rem/1 var(--ui);text-decoration:none;white-space:nowrap;transition:transform .35s var(--ease),background-color .35s var(--ease),color .35s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn i{display:grid;place-items:center;width:2.15rem;height:2.15rem;border-radius:50%;transition:transform .45s var(--ease)}
+.btn:hover i{transform:rotate(45deg)}
+.btn--glow{background:var(--paper);color:var(--ink)}
+.btn--glow i{background:var(--ink);color:var(--paper)}
+.btn--glow:hover{background:#fff}
+.btn--ink{background:var(--ink);color:var(--paper)}
+.btn--ink i{background:var(--paper);color:var(--ink)}
+.btn--ghost{padding:0 1.3rem;color:var(--paper);box-shadow:inset 0 0 0 1px rgba(236,235,231,.45)}
+.btn--ghost:hover{background:rgba(236,235,231,.12)}
+
+/* Header */
+.hdr{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;gap:1rem;padding:1.1rem var(--pad);transition:background-color .5s var(--ease),transform .5s var(--ease),color .5s var(--ease)}
+.hdr.solid{background:rgba(7,11,24,.94)}
+.hdr.hide{transform:translateY(-110%)}
+.hdr .logo img{height:2.5rem;width:auto;filter:brightness(0) invert(1)}
+.hdr nav{display:flex;gap:.25rem;margin-left:auto}
+.hdr nav a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .95rem;border-radius:999px;font-size:.94rem;font-weight:500;text-decoration:none;transition:background-color .3s var(--ease)}
+.hdr nav a:hover{background:rgba(236,235,231,.12)}
+.hdr .btn{min-height:2.75rem;margin-left:.5rem}
+.hdr .btn i{width:1.9rem;height:1.9rem}
+.burger{display:none;margin-left:auto;width:2.9rem;height:2.9rem;border-radius:50%;border:0;background:var(--paper);color:var(--ink);place-items:center;cursor:pointer}
+.sheet{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;justify-content:flex-end;gap:.25rem;padding:6rem var(--pad) 2rem;background:var(--night);clip-path:inset(0 0 100% 0);transition:clip-path .7s var(--ease);visibility:hidden}
+.sheet.open{clip-path:inset(0);visibility:visible}
+.sheet a{font-family:var(--disp);font-stretch:110%;font-weight:600;font-size:clamp(2.2rem,11vw,3.6rem);letter-spacing:-.045em;line-height:1.1;text-transform:uppercase;text-decoration:none}
+.sheet .btn{margin-top:1.5rem;align-self:flex-start;font-family:var(--ui);font-size:1rem;letter-spacing:0;text-transform:none}
+
+/* ---------- 1. Doors hero ---------- */
+.doors{position:relative;height:260vh;height:260svh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;perspective:1800px;background:#1b1610;
+  --open:0;--copy:0;--fill:0}
+.room{position:absolute;inset:0;z-index:0;transform:scale(calc(1.32 - var(--open) * .32));will-change:transform}
+.room__dim{position:absolute;inset:0;z-index:1;background:#05070F;opacity:calc(.65 - var(--open) * .65);pointer-events:none;will-change:opacity}
+.room img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.room__glow{position:absolute;inset:0;z-index:1;background:radial-gradient(60% 70% at 50% 45%,rgba(244,215,161,.38),transparent 70%);opacity:calc(1 - var(--open));will-change:opacity;pointer-events:none}
+.scrim{position:absolute;inset:0;z-index:2;will-change:opacity;background:linear-gradient(0deg,rgba(7,11,24,.92) 0%,rgba(7,11,24,.55) 38%,rgba(7,11,24,.1) 70%),linear-gradient(90deg,rgba(7,11,24,.55),transparent 60%);opacity:var(--copy)}
+.door{position:absolute;top:0;bottom:0;width:50.2%;z-index:3;will-change:transform;backface-visibility:hidden;contain:paint}
+.door--l{left:0;transform-origin:0 50%;transform:rotateY(calc(var(--open) * -96deg)) translateX(calc(var(--open) * -6vw))}
+.door--r{right:0;transform-origin:100% 50%;transform:rotateY(calc(var(--open) * 96deg)) translateX(calc(var(--open) * 6vw))}
+.door__face{position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.18)),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 7px,rgba(0,0,0,.05) 7px 9px,transparent 9px 17px),
+  linear-gradient(180deg,#1E2435,#121726 55%,#0D1120);
+  box-shadow:inset 0 0 0 clamp(14px,2vw,30px) rgba(0,0,0,.18),inset 0 0 0 calc(clamp(14px,2vw,30px) + 1px) rgba(255,255,255,.05),inset 0 0 120px rgba(0,0,0,.5)}
+.door--l .door__face{border-right:1px solid rgba(0,0,0,.6)}
+.door--r .door__face{border-left:1px solid rgba(255,255,255,.04)}
+.stage.opened .door{visibility:hidden}
+.door__shade{position:absolute;inset:0;background:#000;opacity:calc(var(--open) * .7);pointer-events:none;will-change:opacity}
+.handle{position:absolute;top:50%;width:clamp(8px,.7vw,12px);height:clamp(9rem,26vh,15rem);translate:0 -50%;border-radius:6px;background:linear-gradient(90deg,#6d6f75,#d9dade 45%,#8a8c92 60%,#4b4d52);box-shadow:0 10px 20px rgba(0,0,0,.6),0 2px 3px rgba(0,0,0,.5)}
+.door--l .handle{right:clamp(1.2rem,2.6vw,2.6rem)}
+.door--r .handle{left:clamp(1.2rem,2.6vw,2.6rem)}
+.mark{position:absolute;top:50%;translate:0 -50%;font-family:var(--disp);font-weight:300;font-stretch:125%;font-size:clamp(3.6rem,14.5vw,15rem);letter-spacing:-.04em;line-height:.8;color:rgba(236,235,231,.9);white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.08),0 -1px 0 rgba(0,0,0,.6)}
+.door--l .mark{right:clamp(3.2rem,6vw,6rem)}
+.door--r .mark{left:clamp(3.2rem,6vw,6rem)}
+.mark span{display:inline-block;animation:markIn 1.4s var(--ease) .15s both}
+@keyframes markIn{from{opacity:0;transform:translateY(30%);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
+.seam{position:absolute;left:50%;top:0;bottom:0;z-index:4;width:2px;translate:-50% 0;background:linear-gradient(transparent,var(--glow) 20%,#fff 50%,var(--glow) 80%,transparent);box-shadow:0 0 18px 4px rgba(244,215,161,.55),0 0 80px 20px rgba(244,215,161,.25);opacity:calc(1 - var(--open) * 3);will-change:opacity;transform-origin:50% 50%;animation:seam 1.6s var(--ease) .1s both}
+@keyframes seam{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.cue{position:absolute;left:50%;bottom:2rem;z-index:5;translate:-50% 0;display:flex;flex-direction:column;align-items:center;gap:.7rem;font-size:.82rem;color:var(--soft);opacity:calc(1 - var(--open) * 4);will-change:opacity;animation:fadeIn 1s var(--ease) .9s both}
+.cue i{display:block;width:1px;height:2.6rem;background:linear-gradient(var(--glow),transparent);animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeIn{from{opacity:0}}
+.meta{position:absolute;left:var(--pad);right:var(--pad);bottom:2rem;z-index:5;display:flex;justify-content:space-between;font-size:.82rem;color:var(--soft);opacity:calc(1 - var(--open) * 4);will-change:opacity}
+.copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(2rem,6vh,4rem);z-index:6;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem;opacity:var(--copy);transform:translate3d(0,calc((1 - var(--copy)) * 60px),0);pointer-events:none;will-change:transform,opacity}
+.copy.live{pointer-events:auto}
+.copy h1{font-size:clamp(3.2rem,8.6vw,8.4rem)}
+.copy h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.copy h1 .ln span{display:block;transform:translate3d(0,calc((1 - var(--copy)) * 100%),0)}
+.copy h1 .ln:nth-child(2) span{transform:translate3d(0,calc((1 - var(--copy)) * 140%),0)}
+.copy__r{max-width:22rem;padding-bottom:.5rem}
+.copy__r p{color:rgba(236,235,231,.88);font-size:1.06rem;line-height:1.5;margin-bottom:1.4rem}
+.copy__btns{display:flex;flex-wrap:wrap;gap:.6rem}
+
+/* ---------- 2. Intro ---------- */
+.intro{padding:clamp(7rem,14vw,12rem) var(--pad) clamp(5rem,10vw,9rem)}
+.intro__big{max-width:20em;font-family:var(--ui);font-weight:450;font-size:clamp(1.8rem,3.9vw,3.6rem);line-height:1.3;letter-spacing:-.03em}
+.intro__big .w,.rev blockquote .w{color:#2A3350;transition:color .5s var(--ease)}
+.w.lit{color:#ECEBE7}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(4rem,9vw,7rem);border-top:1px solid rgba(236,235,231,.16)}
+.facts li{padding:1.6rem 1.5rem 0 0}
+.facts li+li{padding-left:1.5rem;border-left:1px solid rgba(236,235,231,.16)}
+.facts b{display:block;font-family:var(--disp);font-stretch:110%;font-weight:600;font-size:clamp(2.4rem,4.4vw,4rem);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.facts span{display:block;margin-top:.6rem;color:var(--soft);font-size:.98rem;max-width:16rem}
+
+/* ---------- 3. Horizontal gallery ---------- */
+.hz{position:relative}
+.hz__stage{position:sticky;top:0;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hz__head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;padding:0 var(--pad);margin-bottom:clamp(1.25rem,3vh,2.5rem)}
+.hz__head h2{font-size:clamp(2.4rem,5.6vw,5.4rem)}
+.hz__count{font-family:var(--disp);font-stretch:110%;font-weight:500;font-size:1rem;color:var(--soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hz__count b{color:var(--paper);font-weight:600}
+.track{display:flex;gap:clamp(1rem,1.6vw,1.6rem);padding:0 var(--pad);will-change:transform}
+.slide{position:relative;flex:none;width:clamp(19rem,46vw,46rem);height:clamp(22rem,62vh,40rem);border-radius:14px;overflow:hidden;background:#2a241d;text-decoration:none;color:#fff;isolation:isolate}
+.slide:nth-child(even){width:clamp(17rem,34vw,34rem)}
+.slide img{position:absolute;top:0;left:-10%;width:120%;height:100%;object-fit:cover;z-index:-2;transform:translate3d(var(--px,0%),0,0)}
+.slide{contain:paint}
+.slide::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,11,24,.15),transparent 30%,transparent 50%,rgba(7,11,24,.88))}
+.slide__top{position:absolute;top:1.1rem;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;font-size:.85rem;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums}
+.slide__bot{position:absolute;left:1.25rem;right:1.25rem;bottom:1.25rem;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem}
+.slide h3{font-family:var(--disp);font-stretch:110%;font-weight:600;font-size:clamp(1.7rem,2.9vw,2.8rem);letter-spacing:-.045em;line-height:.95;text-transform:uppercase}
+.slide p{margin-top:.6rem;color:rgba(255,255,255,.82);font-size:.95rem;max-width:22rem}
+.slide__go{display:grid;place-items:center;flex:none;width:3rem;height:3rem;border-radius:50%;background:rgba(10,18,48,.55);transition:background-color .35s var(--ease),color .35s var(--ease),transform .45s var(--ease)}
+.slide:hover .slide__go{background:#fff;color:var(--ink);transform:rotate(45deg)}
+.slide--end{display:flex;flex-direction:column;justify-content:space-between;padding:1.6rem;background:var(--navy);width:clamp(17rem,28vw,26rem)!important}
+.slide--end::after{display:none}
+.slide--end h3{font-size:clamp(1.9rem,3vw,2.8rem)}
+.slide--end ul{display:flex;flex-direction:column;gap:.35rem;font-size:1.02rem}
+.slide--end ul a{text-decoration:none;color:rgba(255,255,255,.85)}
+.slide--end ul a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.hz__bar{margin:clamp(1.25rem,3vh,2.5rem) var(--pad) 0;height:2px;background:rgba(236,235,231,.15);border-radius:2px;overflow:hidden}
+.hz__bar b{display:block;height:100%;background:var(--glow);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* ---------- 4. Video through type ---------- */
+.vt{position:relative;height:280vh;height:280svh}
+.vt__stage{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#3b2a17;--z:0;--o:1;--t:0}
+.vt__stage video,.vt__stage .vt__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vt__mask{position:absolute;inset:0;display:grid;place-items:center;background:var(--paper);mix-blend-mode:screen;opacity:var(--o);transform:scale(calc(1 + var(--z) * var(--z) * 14));transform-origin:var(--ox,50%) 50%;will-change:transform,opacity;backface-visibility:hidden}
+.vt__mask span{font-family:var(--disp);font-weight:800;font-stretch:120%;font-size:clamp(4rem,19vw,22rem);letter-spacing:-.06em;line-height:.8;color:#000;text-transform:uppercase}
+.vt__shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,11,24,.85),rgba(7,11,24,.15) 60%);opacity:var(--t);will-change:opacity}
+.vt__copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(2rem,7vh,5rem);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;opacity:var(--t);transform:translate3d(0,calc((1 - var(--t)) * 40px),0);will-change:transform,opacity}
+.vt__copy h2{font-size:clamp(2.4rem,6vw,5.6rem);max-width:12ch}
+.vt__copy p{max-width:24rem;color:rgba(236,235,231,.88);font-size:1.05rem}
+.vt__label{position:absolute;top:50%;left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;translate:0 calc(-50% + clamp(5rem,13vw,13rem));font-size:.85rem;color:var(--mute);opacity:calc(1 - var(--z) * 5)}
+
+/* ---------- 5. Process (sticky images) ---------- */
+.proc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);padding:clamp(6rem,11vw,10rem) var(--pad)}
+.proc__pin{position:sticky;top:12vh;height:76vh;border-radius:14px;overflow:hidden;background:#2a241d}
+.proc__pin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translate3d(0,6%,0) scale(1.12);transition:opacity .9s var(--ease),transform 1.4s var(--ease);will-change:transform,opacity}
+.proc__pin img.on{opacity:1;transform:none;z-index:1}
+.proc__pin img.past{opacity:1;transform:none}
+.proc__tag{position:absolute;left:1rem;bottom:1rem;z-index:2;padding:.5rem .9rem;border-radius:999px;background:rgba(10,18,48,.75);color:#fff;font-size:.85rem;font-variant-numeric:tabular-nums}
+.proc h2{font-size:clamp(2.6rem,5.6vw,5.4rem);margin-bottom:clamp(3rem,7vw,6rem)}
+.step{min-height:62vh;padding-top:1.5rem;border-top:1px solid rgba(10,18,48,.18);opacity:.3;transition:opacity .6s var(--ease);will-change:opacity}
+.step.on{opacity:1}
+.step__n{font-family:var(--disp);font-stretch:110%;font-weight:600;font-size:1rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.step h3{margin-top:1.5rem;font-family:var(--disp);font-stretch:110%;font-weight:620;font-size:clamp(2rem,3.6vw,3.4rem);letter-spacing:-.05em;line-height:.95;text-transform:uppercase}
+.step p{margin-top:1.1rem;max-width:26rem;color:var(--mute);font-size:1.08rem}
+.step:last-child{min-height:auto;padding-bottom:2rem}
+
+/* ---------- 6. Spec marquee ---------- */
+.mq{padding:clamp(4rem,8vw,7rem) 0;overflow:hidden;border-block:1px solid rgba(236,235,231,.1)}
+.mq__row{display:flex;gap:2.5rem;white-space:nowrap;will-change:transform;backface-visibility:hidden}
+.mq__row+.mq__row{margin-top:1rem}
+.mq__row span{display:inline-flex;align-items:center;gap:2.5rem;font-family:var(--disp);font-stretch:112%;font-weight:600;font-size:clamp(2.4rem,6.4vw,6rem);letter-spacing:-.05em;text-transform:uppercase;line-height:1}
+.mq__row span::after{content:"";width:.32em;height:.32em;border-radius:50%;background:var(--glow)}
+.mq__row--o span{color:transparent;-webkit-text-stroke:1px rgba(236,235,231,.5)}
+
+/* ---------- 7. Review ---------- */
+.rev{padding:clamp(6rem,12vw,11rem) var(--pad);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:3rem;align-items:end}
+.rev blockquote{font-family:var(--ui);font-weight:450;font-size:clamp(1.7rem,3.5vw,3.2rem);line-height:1.3;letter-spacing:-.03em;text-wrap:pretty}
+
+.rev figcaption{font-size:.95rem;color:var(--soft)}
+.rev figcaption strong{display:block;color:var(--paper);font-size:1.1rem;font-weight:600}
+.stars{display:flex;gap:.2rem;margin-bottom:1rem}
+.stars svg{width:1rem;height:1rem;fill:var(--glow)}
+.rev figcaption a{display:inline-block;margin-top:1.25rem;color:var(--paper);text-underline-offset:5px}
+
+/* ---------- 8. CTA ---------- */
+.cta{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(7rem,14vw,12rem) var(--pad) clamp(2rem,4vw,3rem);background:#1A1F2E}
+.cta video,.cta .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(7,11,24,.95) 0%,rgba(7,11,24,.6) 45%,rgba(7,11,24,.05) 80%)}
+.cta h2{font-size:clamp(3.2rem,9.4vw,9.4rem);max-width:10ch}
+.cta__row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:2rem}
+.cta__row p{max-width:24rem;margin-bottom:1.4rem;color:rgba(236,235,231,.88);font-size:1.08rem}
+.contact{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:clamp(3.5rem,8vw,6rem);padding-top:1.5rem;border-top:1px solid rgba(236,235,231,.25)}
+.contact h3{font-size:.82rem;font-weight:600;color:var(--soft);margin-bottom:.4rem}
+.contact a,.contact p{font-size:1.05rem;text-decoration:none;font-variant-numeric:tabular-nums}
+.contact a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Footer */
+.ftr{padding:0 var(--pad) 1.75rem;content-visibility:auto;contain-intrinsic-size:auto 640px}
+.ftr__word{display:block;width:100%;height:auto;padding-top:clamp(2.5rem,5vw,4rem)}
+.ftr__word text{font:300 200px var(--disp);font-stretch:125%;letter-spacing:-.04em;fill:var(--paper)}
+.ftr__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid rgba(236,235,231,.14);color:var(--soft);font-size:.95rem}
+.ftr h3{font-size:.85rem;font-weight:600;color:var(--paper);margin-bottom:.8rem}
+.ftr li+li{margin-top:.45rem}
+.ftr a{text-decoration:none}
+.ftr a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.ftr__base{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;font-size:.82rem;color:#7D86A3}
+
+/* Responsive */
+@media (max-width:980px){
+  .hdr nav,.hdr .btn{display:none}
+  .burger{display:grid}
+  .copy{grid-template-columns:1fr}
+  .proc{grid-template-columns:1fr}
+  .proc__pin{top:5rem;height:46vh;z-index:2}
+  .step{min-height:48vh}
+  .rev{grid-template-columns:1fr}
+  .contact,.ftr__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .doors{height:230vh;height:230svh}
+  .mark{font-size:clamp(2.6rem,15vw,5rem)}
+  .door--l .mark{right:2.2rem}.door--r .mark{left:2.2rem}
+  .handle{height:7rem}
+  .meta{display:none}
+  .facts{grid-template-columns:1fr}
+  .facts li,.facts li+li{padding:1.4rem 0;border-left:0;border-bottom:1px solid rgba(236,235,231,.16)}
+  .slide,.slide:nth-child(even){width:78vw;height:58vh}
+  .hz__head{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .contact{grid-template-columns:1fr}
+  .ftr__grid{grid-template-columns:1fr 1fr}
+  .ftr__grid>div:first-child{grid-column:1/-1}
+  .copy__btns .btn{flex:1 1 100%;justify-content:space-between}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M4 9h16M4 15h16"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="st" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr" id="hdr">
+  <a class="logo" href="#main" aria-label="Millwork Design Center, home"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/logo-3.png" alt="Millwork Design Center" width="146" height="40"></a>
+  <nav aria-label="Main">
+    <a href="#spaces">Spaces</a>
+    <a href="#process">Process</a>
+    <a href="https://www.millworkdc.com/inspiration/">Inspiration</a>
+    <a href="https://www.millworkdc.com/about-us/">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn--glow" href="https://www.millworkdc.com/contact/">Free consultation<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#menu"/></svg></button>
+</header>
+<div class="sheet" id="sheet">
+  <a href="#spaces">Spaces</a><a href="#process">Process</a><a href="https://www.millworkdc.com/inspiration/">Inspiration</a><a href="https://www.millworkdc.com/about-us/">About</a><a href="#contact">Contact</a>
+  <a class="btn btn--glow" href="https://www.millworkdc.com/contact/">Free consultation<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+</div>
+
+<main id="main">
+
+<!-- 1. Doors -->
+<section class="doors" id="doors" aria-labelledby="hero-h">
+  <div class="stage" id="stage">
+    <div class="room"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/closet-by.jpg" alt="A walk-in closet built by Millwork" fetchpriority="high"></div>
+    <div class="room__dim" aria-hidden="true"></div><div class="room__glow" aria-hidden="true"></div><div class="scrim" aria-hidden="true"></div>
+    <div class="door door--l" aria-hidden="true"><div class="door__face"></div><span class="mark"><span>MILL</span></span><span class="handle"></span><div class="door__shade"></div></div>
+    <div class="door door--r" aria-hidden="true"><div class="door__face"></div><span class="mark"><span>WORK</span></span><span class="handle"></span><div class="door__shade"></div></div>
+    <div class="seam" aria-hidden="true"></div>
+    <div class="meta" aria-hidden="true"><span>Design Center</span><span>Lorton, Virginia</span></div>
+    <div class="cue" aria-hidden="true">Scroll to open<i></i></div>
+    <div class="copy" id="copy">
+      <h1 class="disp" id="hero-h"><span class="ln"><span>Storage, built</span></span><span class="ln"><span>to the inch.</span></span></h1>
+      <div class="copy__r">
+        <p>Custom closets and European frameless cabinets, designed with you, made in our Lorton workshop and installed by professionals.</p>
+        <div class="copy__btns">
+          <a class="btn btn--glow" href="https://www.millworkdc.com/contact/">Book a consultation<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+          <a class="btn btn--ghost" href="#spaces">See our work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Intro -->
+<section class="intro" aria-label="About Millwork">
+  <p class="intro__big" data-fill>Every Millwork piece starts with a tape measure in your room and ends with a soft-close drawer that shuts without a sound. In between, we design it with you and build it ourselves.</p>
+  <ul class="facts">
+    <li><b>84 × 14 in</b><span>Standard closet height and depth, any size to order</span></li>
+    <li><b>1 mm</b><span>Edge banding on every exposed side</span></li>
+    <li><b data-count="1000" data-suffix=" lb">1,000 lb</b><span>Load rating on wall and floor units</span></li>
+  </ul>
+</section>
+
+<!-- 3. Horizontal gallery -->
+<section class="hz" id="spaces" aria-labelledby="sp-h">
+  <div class="hz__stage">
+    <div class="hz__head">
+      <h2 class="disp" id="sp-h">Every room,<br>one workshop.</h2>
+      <span class="hz__count" aria-hidden="true"><b id="cur">01</b> / 07</span>
+    </div>
+    <div class="track" id="track">
+      <a class="slide" href="https://www.millworkdc.com/custom-closets/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/slider-2-1-1.jpg" alt="" loading="lazy"><div class="slide__top"><span>01</span><span>Bedroom</span></div><div class="slide__bot"><div><h3>Custom closets</h3><p>Walk-in, reach-in and wardrobes, planned around what you own.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="slide" href="https://www.millworkdc.com/custom-cabinets/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/kitchen-by-millworkdc.jpg" alt="" loading="lazy"><div class="slide__top"><span>02</span><span>Kitchen</span></div><div class="slide__bot"><div><h3>Kitchen cabinets</h3><p>European frameless construction.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="slide" href="https://www.millworkdc.com/pantry-systems/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/Millwork-dc-3-scaled.jpg" alt="" loading="lazy"><div class="slide__top"><span>03</span><span>Kitchen</span></div><div class="slide__bot"><div><h3>Pantry systems</h3><p>Shelving built around what you stock.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="slide" href="https://www.millworkdc.com/wall-beds/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2021/06/Welcome-to-Millwork.jpg" alt="" loading="lazy"><div class="slide__top"><span>04</span><span>Bedroom</span></div><div class="slide__bot"><div><h3>Wall beds</h3><p>A guest room that folds away.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="slide" href="https://www.millworkdc.com/commercial-spaces/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2021/05/Studio-Prototype-780x440.jpg" alt="" loading="lazy"><div class="slide__top"><span>05</span><span>Business</span></div><div class="slide__bot"><div><h3>Commercial spaces</h3><p>Offices, studios and clinics.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <a class="slide" href="https://www.millworkdc.com/home-office/"><img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2016/05/closed-scaled-780x440.jpg" alt="" loading="lazy"><div class="slide__top"><span>06</span><span>Home</span></div><div class="slide__bot"><div><h3>Home office</h3><p>Desks, storage and shelving.</p></div><span class="slide__go"><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></span></div></a>
+      <div class="slide slide--end"><div><span style="font-size:.85rem;opacity:.8">07</span><h3 style="margin-top:1rem">And the rest of the house</h3></div><ul>
+        <li><a href="https://www.millworkdc.com/entertainment-center/">Entertainment centers</a></li><li><a href="https://www.millworkdc.com/laundry-room/">Laundry room</a></li><li><a href="https://www.millworkdc.com/mudroom/">Mudroom</a></li><li><a href="https://www.millworkdc.com/garage/">Garage</a></li></ul></div>
+    </div>
+    <div class="hz__bar" aria-hidden="true"><b id="hzbar"></b></div>
+  </div>
+</section>
+
+<!-- 4. Video through type -->
+<section class="vt" id="vt" aria-labelledby="vt-h">
+  <div class="vt__stage" id="vtStage">
+    <img decoding="async" class="vt__poster" src="https://www.millworkdc.com/wp-content/uploads/2021/11/craftmhome.jpg" alt="">
+    <video muted loop playsinline preload="none" data-lazy aria-hidden="true"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/6b0bd33e-2a03-471d-b61d-3d49f25ca16f.mp4" type="video/mp4"></video>
+    <div class="vt__mask" id="vtMask" aria-hidden="true"><span id="vtWord">Crafted</span></div>
+    <div class="vt__label" aria-hidden="true"><span>Lorton, Virginia</span><span>Keep scrolling</span></div>
+    <div class="vt__shade"></div>
+    <div class="vt__copy">
+      <h2 class="disp" id="vt-h">Made in Virginia, not shipped in.</h2>
+      <p>Every panel is cut and edge-banded in our Lorton workshop, then delivered pre-cut with a complete hardware kit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Process -->
+<section class="proc light" id="process" aria-labelledby="pr-h">
+  <div class="proc__pin" aria-hidden="true">
+    <img decoding="async" class="on" src="https://www.millworkdc.com/wp-content/uploads/2021/06/Welcome-to-Millwork.jpg" alt="">
+    <img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2021/06/1-materials.jpg" alt="">
+    <img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2021/11/craftmhome.jpg" alt="">
+    <img decoding="async" src="https://www.millworkdc.com/wp-content/uploads/2014/08/closet-by.jpg" alt="">
+    <span class="proc__tag" id="ptag">Step 01 of 04</span>
+  </div>
+  <div>
+    <h2 class="disp" id="pr-h">From first<br>measure to<br>final screw.</h2>
+    <ol>
+      <li class="step on"><span class="step__n">01</span><h3>Consult</h3><p>We talk through the room, how you use it, your budget and the look you want.</p></li>
+      <li class="step"><span class="step__n">02</span><h3>Measure and design</h3><p>Precise measurements and a design you sign off, so every panel arrives pre-cut and ready.</p></li>
+      <li class="step"><span class="step__n">03</span><h3>Build</h3><p>Made in Lorton with BLUM soft-close glides and hinges and 1 mm edge banding on every exposed side.</p></li>
+      <li class="step"><span class="step__n">04</span><h3>Install</h3><p>Delivered with a complete hardware kit and installed by professionals, fast.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 6. Spec marquee -->
+<section class="mq" aria-label="Standard specification">
+  <div class="mq__row" data-dir="-1"><span>BLUM soft-close</span><span>1 mm edge banding</span><span>84 in standard height</span><span>BLUM soft-close</span><span>1 mm edge banding</span><span>84 in standard height</span></div>
+  <div class="mq__row mq__row--o" data-dir="1"><span>Rated to 1,000 lb</span><span>Full hardware kit</span><span>Preset or custom</span><span>Rated to 1,000 lb</span><span>Full hardware kit</span><span>Preset or custom</span></div>
+</section>
+
+<!-- 7. Review -->
+<figure class="rev">
+  <blockquote data-fill>“I had a custom-made closet by MillworkDC and they did exactly what I needed. … he made precise measurements so the elements came pre-cut which enabled fast installation. … The crew was efficient and the work was done to my complete satisfaction.”</blockquote>
+  <figcaption>
+    <div class="stars" role="img" aria-label="Five stars"><svg aria-hidden="true"><use href="#st"/></svg><svg aria-hidden="true"><use href="#st"/></svg><svg aria-hidden="true"><use href="#st"/></svg><svg aria-hidden="true"><use href="#st"/></svg><svg aria-hidden="true"><use href="#st"/></svg></div>
+    <strong>Zlatica Hoke</strong>Google review
+    <br><a href="https://www.millworkdc.com/testimonials/">Read more reviews</a>
+  </figcaption>
+</figure>
+
+<!-- 8. CTA -->
+<section class="cta" id="contact" aria-labelledby="cta-h">
+  <img decoding="async" class="poster" src="https://www.millworkdc.com/wp-content/uploads/2021/06/Millwork-design-center.jpg" alt="">
+  <video muted loop playsinline preload="none" data-lazy aria-hidden="true"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260503_144509_89e2d612-8af2-45c3-90f4-4831bc60715d.mp4" type="video/mp4"></video>
+  <div class="cta__row">
+    <h2 class="disp" id="cta-h">Let’s open your closet.</h2>
+    <div>
+      <p>Book a free consultation. We talk through the space, your budget and the look you want, then send you a quote.</p>
+      <div class="copy__btns">
+        <a class="btn btn--glow" href="https://www.millworkdc.com/contact/">Book a consultation<i><svg class="ic" aria-hidden="true"><use href="#ne"/></svg></i></a>
+        <a class="btn btn--ghost" href="https://wa.me/17036460909">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+  <div class="contact">
+    <div><h3>Call</h3><a href="tel:+17036460909">703-646-0909</a></div>
+    <div><h3>Email</h3><a href="mailto:info@millworkdc.com">info@millworkdc.com</a></div>
+    <div><h3>Visit</h3><p>7345 Lockport Pl, Lorton, VA 22079</p></div>
+    <div><h3>Hours</h3><p>Mon to Fri 8AM to 5PM<br>Sat 10AM to 2PM</p></div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <svg class="ftr__word" viewBox="0 0 1000 150" aria-hidden="true" focusable="false"><text x="0" y="140" textLength="994" lengthAdjust="spacingAndGlyphs">MILLWORK</text></svg>
+  <div class="ftr__grid">
+    <div><p style="max-width:22rem">Custom closets and European frameless cabinets, manufactured in Lorton, Virginia.</p></div>
+    <div><h3>Explore</h3><ul><li><a href="https://www.millworkdc.com/inspiration/">Inspiration</a></li><li><a href="https://www.millworkdc.com/blog/">Journal</a></li><li><a href="https://www.millworkdc.com/faqs/">FAQs</a></li><li><a href="https://www.millworkdc.com/high-gloss-mdf-panels/">MDF panels</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="https://www.millworkdc.com/about-us/">About</a></li><li><a href="https://www.millworkdc.com/our-process/">Process</a></li><li><a href="https://www.millworkdc.com/our-warranty-policy/">Warranty</a></li><li><a href="https://www.millworkdc.com/privacy-policy/">Privacy policy</a></li></ul></div>
+    <div><h3>Follow</h3><ul><li><a href="https://www.instagram.com/millworkdc/">Instagram</a></li><li><a href="https://www.facebook.com/MillworkDC/">Facebook</a></li><li><a href="https://tr.pinterest.com/MillworkDC/">Pinterest</a></li><li><a href="https://www.youtube.com/channel/UCbeKPUHfmePXlh7CgbdDiNg">YouTube</a></li></ul></div>
+  </div>
+  <div class="ftr__base"><span>© 2026 Millwork Design Center</span><span>Lorton, Virginia</span></div>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp=function(v,a,b){return v<a?a:v>b?b:v;};
+  var ss=function(a,b,v){var x=clamp((v-a)/(b-a),0,1);return x*x*(3-2*x);};
+  var $=function(q){return document.querySelector(q);},$$=function(q){return [].slice.call(document.querySelectorAll(q));};
+  var vh=innerHeight,vw=innerWidth;
+
+  /* Menu */
+  var hdr=$('#hdr'),burger=hdr.querySelector('.burger'),sheet=$('#sheet');
+  burger.addEventListener('click',function(){var o=sheet.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');burger.querySelector('use').setAttribute('href',o?'#x':'#menu');document.body.style.overflow=o?'hidden':'';});
+  $$('#sheet a').forEach(function(a){a.addEventListener('click',function(){if(sheet.classList.contains('open'))burger.click();});});
+
+  /* Elements */
+  var stage=$('#stage'),doors=$('#doors'),copy=$('#copy');
+  var hz=$('#spaces'),track=$('#track'),bar=$('#hzbar'),cur=$('#cur'),slides=[].slice.call(track.children);
+  var simgs=slides.map(function(s){return s.querySelector('img');});
+  var vt=$('#vt'),vtStage=$('#vtStage'),vtWord=$('#vtWord');
+  var rows=$$('.mq__row'),mq=$('.mq');
+
+  /* Word fills: split once, then only toggle classes that change */
+  var fills=$$('[data-fill]').map(function(el){
+    el.innerHTML=el.textContent.trim().split(/\s+/).map(function(w){return '<span class="w">'+w+'</span>';}).join(' ');
+    return {el:el,w:[].slice.call(el.querySelectorAll('.w')),lit:0,top:0,h:0};
+  });
+
+  /* Cached geometry: read layout only on resize, never while scrolling */
+  var G={},trackW=0,slideX=[];
+  function docTop(el){var t=0;while(el){t+=el.offsetTop;el=el.offsetParent;}return t;}
+  function layout(){
+    vh=innerHeight;vw=innerWidth;
+    trackW=track.scrollWidth;
+    hz.style.height=Math.round(trackW-vw+vh)+'px';
+    G.doors={t:docTop(doors),h:doors.offsetHeight};
+    G.hz={t:docTop(hz),h:hz.offsetHeight};
+    G.vt={t:docTop(vt),h:vt.offsetHeight};
+    G.mq={t:docTop(mq),h:mq.offsetHeight};
+    slideX=slides.map(function(s){return {x:s.offsetLeft,w:s.offsetWidth};});
+    fills.forEach(function(f){f.top=docTop(f.el);f.h=f.el.offsetHeight;});
+    var r=vtWord.getBoundingClientRect(),m=vtWord.parentNode.getBoundingClientRect();
+    vtWord.parentNode.style.setProperty('--ox',(((r.left-m.left)+r.height*.09)/m.width*100).toFixed(2)+'%');
+  }
+  function prog(g,y){return clamp((y-g.t)/(g.h-vh),0,1);}
+
+  /* Smoothed scroll value: motion eases toward the scroll position instead of jumping per wheel notch */
+  var target=scrollY,smooth=scrollY,running=false,lastY=scrollY,prev={};
+  function set(el,k,v){var key=k+(el.id||el.className);if(prev[key]===v)return;prev[key]=v;el.style.setProperty(k,v);}
+
+  function render(y){
+    /* doors */
+    var p=prog(G.doors,y),open=ss(.02,.55,p),c=ss(.5,.82,p);
+    if(!reduce&&y<G.doors.t+G.doors.h+vh){
+      set(stage,'--open',open.toFixed(3));
+      set(stage,'--copy',c.toFixed(3));
+      stage.classList.toggle('opened',open>.96);
+      copy.classList.toggle('live',c>.6);
+    }
+    /* gallery */
+    if(y>G.hz.t-vh&&y<G.hz.t+G.hz.h){
+      var hp=prog(G.hz,y),dx=(trackW-vw)*hp,idx=0;
+      track.style.transform='translate3d('+(-dx).toFixed(1)+'px,0,0)';
+      set(bar,'--p',hp.toFixed(4));
+      for(var i=0;i<slides.length;i++){
+        var sx=slideX[i].x-dx,mid=(sx+slideX[i].w/2-vw/2)/vw;
+        if(sx<vw*.5)idx=i;
+        if(simgs[i]&&sx<vw&&sx+slideX[i].w>0)simgs[i].style.transform='translate3d('+(mid*-8).toFixed(2)+'%,0,0)';
+      }
+      var t=('0'+(idx+1)).slice(-2);if(cur.textContent!==t)cur.textContent=t;
+    }
+    /* video through type */
+    if(y>G.vt.t-vh&&y<G.vt.t+G.vt.h){
+      var vp=prog(G.vt,y);
+      set(vtStage,'--z',ss(.05,.72,vp).toFixed(4));
+      set(vtStage,'--o',(1-ss(.55,.75,vp)).toFixed(3));
+      set(vtStage,'--t',ss(.72,.92,vp).toFixed(3));
+    }
+    /* marquee */
+    if(y>G.mq.t-vh&&y<G.mq.t+G.mq.h){
+      var mp=(y+vh-G.mq.t)/(vh+G.mq.h);
+      rows[0].style.transform='translate3d('+(-mp*40).toFixed(2)+'%,0,0)';
+      rows[1].style.transform='translate3d('+(-40+mp*40).toFixed(2)+'%,0,0)';
+    }
+    /* word fills */
+    fills.forEach(function(f){
+      if(y<f.top-vh||y>f.top+f.h+vh)return;
+      var fp=clamp((y+vh*.85-f.top)/(f.h+vh*.4),0,1),n=Math.round(fp*f.w.length);
+      if(n===f.lit)return;
+      var a=Math.min(n,f.lit),b=Math.max(n,f.lit);
+      for(var i=a;i<b;i++)f.w[i].classList.toggle('lit',i<n);
+      f.lit=n;
+    });
+  }
+
+  function headerState(y){
+    hdr.classList.toggle('solid',y>vh*1.6);
+    if(y>vh*2.6&&y>lastY+4&&!sheet.classList.contains('open'))hdr.classList.add('hide');
+    else if(y<lastY-4||y<vh*2.6)hdr.classList.remove('hide');
+    lastY=y;
+  }
+
+  function tick(){
+    smooth+= (target-smooth)*.14;
+    if(Math.abs(target-smooth)<.5)smooth=target;
+    render(smooth);
+    if(smooth!==target)requestAnimationFrame(tick);else running=false;
+  }
+  function onScroll(){
+    target=scrollY;headerState(target);
+    if(reduce){render(target);return;}
+    /* big jumps (anchor links, keyboard End) snap instead of sweeping */
+    if(Math.abs(target-smooth)>vh*3)smooth=target;
+    if(!running){running=true;requestAnimationFrame(tick);}
+  }
+
+  /* Process: active step via IntersectionObserver, no scroll math */
+  var steps=$$('.step'),pimgs=$$('.proc__pin img'),ptag=$('#ptag');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;var on=steps.indexOf(e.target);
+      steps.forEach(function(s,i){s.classList.toggle('on',i===on);});
+      pimgs.forEach(function(im,i){im.classList.toggle('on',i===on);im.classList.toggle('past',i<on);});
+      ptag.textContent='Step 0'+(on+1)+' of 04';
+    });},{rootMargin:'-45% 0px -45% 0px'});
+    steps.forEach(function(s){io.observe(s);});
+
+    /* Videos: load and play only while on screen */
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){if(!v.dataset.ready){v.preload='auto';v.load();v.dataset.ready=1;}var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
+      else v.pause();
+    });},{rootMargin:'200px 0px'});
+    if(!reduce)$$('video[data-lazy]').forEach(function(v){vio.observe(v);});
+
+    /* Count up */
+    var num=$('[data-count]');
+    if(num&&!reduce){var done=false;new IntersectionObserver(function(e){if(!e[0].isIntersecting||done)return;done=true;var t0=performance.now(),end=+num.dataset.count,suf=num.dataset.suffix||'';
+      (function st(t){var k=Math.min(1,(t-t0)/1500),v=Math.round(end*(1-Math.pow(1-k,4)));num.textContent=v.toLocaleString('en-US')+suf;if(k<1)requestAnimationFrame(st);})(t0);
+    },{threshold:.6}).observe(num);}
+  }
+
+  /* Resize: mobile URL-bar show/hide only changes height, so ignore it unless width changes */
+  var lastW=vw,rz;
+  addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){if(innerWidth!==lastW||Math.abs(innerHeight-vh)>160){lastW=innerWidth;layout();render(smooth=target=scrollY);}},150);});
+  addEventListener('scroll',onScroll,{passive:true});
+
+  layout();
+  if(reduce){stage.style.setProperty('--open',1);stage.style.setProperty('--copy',1);stage.classList.add('opened');copy.classList.add('live');}
+  render(smooth=target=scrollY);headerState(target);
+  if(document.fonts)document.fonts.ready.then(function(){layout();render(smooth);});
+  addEventListener('load',function(){layout();render(smooth);});
+})();
+</script>
+</body>
+</html>
